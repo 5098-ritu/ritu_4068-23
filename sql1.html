@@ -1,0 +1,2941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program Questions</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to external CSS -->
+    <script>
+        function showProgram(questionNumber) {
+            // Hide all code and output sections
+            document.querySelectorAll('.code-container, .output-container').forEach((el) => {
+                el.style.display = 'none';
+            });
+
+            // Show the selected question's code and output
+            document.getElementById('code' + questionNumber).style.display = 'block';
+            document.getElementById('output' + questionNumber).style.display = 'block';
+
+            // Show the main output container
+            document.getElementById('output-container').style.display = 'flex';
+        }
+
+        function toggleDropdown(dropdownId) {
+            var dropdown = document.getElementById(dropdownId);
+            dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
+        }
+    </script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="queries.html">Queries</a></li>
+            <li><a href="contact.html">Submitted By</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="question-list">
+            <h2>SQL Queries:</h2>
+            <h3><u>(All Queries are executed through mysql)</u></h3>
+            <h3>DDL (Data Definition List)</h3>
+            <ul>
+                <!-- Dropdown toggle for Create -->
+                <li>
+                    <a href="#" onclick="toggleDropdown('dropdownMenu1')">1. Create</a>
+                    <ul id="dropdownMenu1" class="dropdown-menu">
+                        <li><a href="#" onclick="showProgram(1)">Creating database</a></li>
+                        <li><a href="#" onclick="showProgram(2)">Creating table</a></li>
+                    </ul>
+                </li>
+    
+                <!-- Dropdown toggle for Drop -->
+                <li>
+                    <a href="#" onclick="toggleDropdown('dropdownMenu2')">2. Drop</a>
+                    <ul id="dropdownMenu2" class="dropdown-menu">
+                        <li><a href="#" onclick="showProgram(3)">Dropping database</a></li>
+                        <li><a href="#" onclick="showProgram(4)">Dropping table</a></li>
+                    </ul>
+                </li>
+    
+                <li><a href="#" onclick="showProgram(5)">3. Truncate</a></li>
+                <li>
+                    <a href="#" onclick="toggleDropdown('dropdownMenu3')">4. Alter</a>
+                    <ul id="dropdownMenu3" class="dropdown-menu">
+                        <li><a href="#" onclick="showProgram(6)">With Add</a></li>
+                        <li><a href="#" onclick="showProgram(7)">With Modify</a></li>
+                    </ul>
+                </li>
+            </ul>
+    
+            <h3>DML (Data Manipulation List)</h3>
+            <ul>
+                <li>
+                    <a href="#" onclick="toggleDropdown('dropdownMenu4')">1. Insert</a>
+                    <ul id="dropdownMenu4" class="dropdown-menu">
+                        <li><a href="#" onclick="showProgram(8)">Inserting a row</a></li>
+                        <li><a href="#" onclick="showProgram(9)">Inserting multiple rows</a></li>
+                        <li><a href="#" onclick="showProgram(10)">Inserting specific columns</a></li>
+                    </ul>
+                </li>
+    
+                <!-- Dropdown toggle for Update -->
+                <li>
+                    <a href="#" onclick="toggleDropdown('dropdownMenu5')">2. Update</a>
+                    <ul id="dropdownMenu5" class="dropdown-menu">
+                        <li><a href="#" onclick="showProgram(11)">Updating one row</a></li>
+                        <li><a href="#" onclick="showProgram(12)">Updating all rows</a></li>
+                        <li><a href="#" onclick="showProgram(13)">Updating multiple rows</a></li>
+                    </ul>
+                </li>
+    
+                <li>
+                    <a href="#" onclick="toggleDropdown('dropdownMenu6')">3. Delete</a>
+                    <ul id="dropdownMenu6" class="dropdown-menu">
+                        <li><a href="#" onclick="showProgram(14)">Deleting one row</a></li>
+                        <li><a href="#" onclick="showProgram(15)">Deleting table</a></li>
+                    </ul>
+                </li>
+            </ul>
+    
+            <h3>DQL (Data Query List)</h3>
+            <ul>
+                <li><a href="#" onclick="showProgram(16)">1. Select Query</a></li>
+            </ul>
+    
+            <h3>DCL (Data Control Language)</h3>
+            <ul>
+                <li><a href="#" onclick="showProgram(17)">1. Grant</a></li>
+                <li><a href="#" onclick="showProgram(18)">2. Revoke</a></li>
+            </ul>
+    
+            <h3>TCL (Transaction Control Language)</h3>
+            <ul>
+                <li><a href="#" onclick="showProgram(19)">1. Commit</a></li>
+                <li><a href="#" onclick="showProgram(20)">2. Roll Back</a></li>
+            </ul>
+    
+            <h3>CONSTRAINTS</h3>
+            <ul>
+                <li><a href="#" onclick="showProgram(21)">1. Primary Key</a></li>
+                <li><a href="#" onclick="showProgram(22)">2. Foreign Key</a></li>
+                <li><a href="#" onclick="showProgram(23)">3. Not Null</a></li>
+                <li><a href="#" onclick="showProgram(24)">4. Unique</a></li>
+                <li><a href="#" onclick="showProgram(25)">5. Check</a></li>
+                <li><a href="#" onclick="showProgram(26)">6. Default</a></li>
+                <li>
+                    <a href="#" onclick="toggleDropdown('dropdownMenu7')">7. Auto Increment</a>
+                    <ul id="dropdownMenu7" class="dropdown-menu">
+                        <li><a href="#" onclick="showProgram(27)">On delete cascade</a></li>
+                        <li><a href="#" onclick="showProgram(28)">On delete set null</a></li>
+                        <li><a href="#" onclick="showProgram(53)">On update cascade</a></li>
+                        <li><a href="#" onclick="showProgram(52)">On update set null</a></li>
+                    </ul>
+                </li>
+                <h3>OPERATORS</h3>
+                <!-- Dropdown toggle for comparison operators -->
+                <ul>
+                    <li>
+                        <a href="#" onclick="toggleDropdown('dropdownMenu10')">1. Comparison Operators</a>
+                        <ul id="dropdownMenu10" class="dropdown-menu">
+                            <li><a href="#" onclick="showProgram(29)">(=): Equal to</a></li>
+                            <li><a href="#" onclick="showProgram(30)">(!= or <>): Not equal to</a></li>
+                            <li><a href="#" onclick="showProgram(31)">(>): Greater than</a></li>
+                            <li><a href="#" onclick="showProgram(32)">(<): Less than</a></li>
+                            <li><a href="#" onclick="showProgram(33)">(>=): Greater than or equal to</a></li>
+                            <li><a href="#" onclick="showProgram(34)">(<=): Less than or equal to</a></li>
+                            <li><a href="#" onclick="showProgram(35)">(IN): Used to check if a value is in a list of values</a></li>
+                            <li><a href="#" onclick="showProgram(36)">(NOT IN): Used to check if a value is not in a list of values</a></li>
+                            <li><a href="#" onclick="showProgram(37)">(LIKE): Used to search for a specified pattern</a></li>
+                            <li><a href="#" onclick="showProgram(38)">(IS NULL): Used to check if a value is NULL</a></li>
+                            <li><a href="#" onclick="showProgram(39)">(IS NOT NULL): Used to check if a value is not NULL</a></li>
+                        </ul>
+                    </li>
+                
+                    <!-- Dropdown toggle for logical operators -->
+                    <li>
+                        <a href="#" onclick="toggleDropdown('dropdownMenu11')">2. Logical Operators</a>
+                        <ul id="dropdownMenu11" class="dropdown-menu">
+                            <li><a href="#" onclick="showProgram(40)">(AND): Returns true if both conditions are true</a></li>
+                            <li><a href="#" onclick="showProgram(41)">(OR): Returns true if at least one condition is true</a></li>
+                            <li><a href="#" onclick="showProgram(42)">(NOT): Reverses the result of a condition</a></li>
+                        </ul>
+                    </li>
+                
+                    <!-- Dropdown toggle for aggregate operators -->
+                    <li>
+                        <a href="#" onclick="toggleDropdown('dropdownMenu12')">3. Aggregate Operators</a>
+                        <ul id="dropdownMenu12" class="dropdown-menu">
+                            <li><a href="#" onclick="showProgram(43)">(COUNT()): Returns the number of rows</a></li>
+                            <li><a href="#" onclick="showProgram(44)">(SUM()): Returns the sum of a numeric column</a></li>
+                            <li><a href="#" onclick="showProgram(45)">(AVG()): Returns the average value of a numeric column</a></li>
+                            <li><a href="#" onclick="showProgram(46)">(MIN()): Returns the smallest value</a></li>
+                            <li><a href="#" onclick="showProgram(47)">(MAX()): Returns the largest value</a></li>
+                        </ul>
+                    </li>
+                
+                    <!-- Dropdown toggle for set operators -->
+                    <li>
+                        <a href="#" onclick="toggleDropdown('dropdownMenu13')">4. Set Operators</a>
+                        <ul id="dropdownMenu13" class="dropdown-menu">
+                            <li><a href="#" onclick="showProgram(48)">(UNION): Combines the results of two queries (removes duplicates)</a></li>
+                            <li><a href="#" onclick="showProgram(49)">(UNION ALL): Combines the results of two queries (keeps duplicates)</a></li>
+                            <li><a href="#" onclick="showProgram(50)">(INTERSECT): Returns only the rows that are common between the two SELECT queries</a></li>
+                            <li><a href="#" onclick="showProgram(51)">(EXCEPT/MINUS): Returns rows from the first query that are not in the second query</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                               <h3>SQL CLAUSES</h3>
+                               <ul> <li>
+                                       <a href="#" onclick="toggleDropdown('dropdownMenu14')">1. SQL Clauses</a>
+                                       <ul id="dropdownMenu14" class="dropdown-menu">
+                                           <li><a href="#" onclick="showProgram(54)">WHERE Clause</a></li>
+                                           <li><a href="#" onclick="showProgram(55)">GROUP BY Clause</a></li>
+                                           <li><a href="#" onclick="showProgram(56)">HAVING Clause</a></li>
+                                           <li><a href="#" onclick="showProgram(57)">ORDER BY Clause</a></li>
+                                           <li><a href="#" onclick="showProgram(58)">LIMIT Clause</a></li>
+                                           <li><a href="#" onclick="showProgram(59)">FROM Clause</a></li>
+                                       </ul>
+                                   </li>     
+                                   <h3>VIEWS</h3>
+                                   <ul>
+                                    <li>
+                                        <a href="#" onclick="toggleDropdown('dropdownMenu15')">Views</a>
+                                        <ul id="dropdownMenu15" class="dropdown-menu">
+                                      
+                                           <li><a href="#" onclick="showProgram(60)">1. Creation of View</a></li>
+                                           <li><a href="#" onclick="showProgram(61)">2. Delection of View</a></li>
+                                          
+                                       </ul>    
+                                       </li>   
+                                       <h3> FUNCTIONS</h3>
+              <!-- Dropdown toggle for date functions -->
+                <li>
+                    <a href="#" onclick="toggleDropdown('dropdownMenu16')">1. Date Functions</a>
+                    <ul id="dropdownMenu16" class="dropdown-menu">
+                        <li><a href="#" onclick="showProgram(62)">Current date</a></li>
+                        <li><a href="#" onclick="showProgram(63)">Current time</a></li>
+                       <li> <a href="#" onclick="showProgram(64)">Current timestamp</a></li>
+                         
+                      <li> <a href="#" onclick="showProgram(65)">Year() Month() Date()</a></li>
+                        <li> <a href="#" onclick="showProgram(66)">Add date</a></li>
+                           <li> <a href="#" onclick="showProgram(67)">Date sub</a></li>
+                         <li> <a href="#" onclick="showProgram(68)">Date diff</a></li>
+                       <li> <a href="#" onclick="showProgram(69)">Timestamp diff</a></li>
+                       <li> <a href="#" onclick="showProgram(70)">Now</a></li>
+                    </ul>
+                </li>
+                <!-- Dropdown toggle for date functions -->
+                <li>
+                    <a href="#" onclick="toggleDropdown('dropdownMenu17')">2. Character Functions</a>
+                    <ul id="dropdownMenu17" class="dropdown-menu">
+                        <li><a href="#" onclick="showProgram(71)">Lower(case manipulation)</a></li>
+                        <li><a href="#" onclick="showProgram(72)">Upper</a></li>
+                       <li> <a href="#" onclick="showProgram(73)">Initcap</a></li>
+                         
+                      <li> <a href="#" onclick="showProgram(74)">Concat(character manipulation)</a></li>
+                        <li> <a href="#" onclick="showProgram(75)">Length</a></li>
+                           <li> <a href="#" onclick="showProgram(76)">Trim</a></li>
+                         <li> <a href="#" onclick="showProgram(77)">Substring</a></li>
+                       <li> <a href="#" onclick="showProgram(78)">Replace</a></li>
+                       <li> <a href="#" onclick="showProgram(79)">Rpad()and Lpad()</a></li>
+                         <li> <a href="#" onclick="showProgram(80)">Reverse</a></li>
+                    </ul>
+                </li>
+                <h3>NESTED QUERIES</h3>
+                <li>
+                    <a href="#" onclick="toggleDropdown('dropdownMenu18')">Nested Query</a>
+                    <ul id="dropdownMenu18" class="dropdown-menu">
+                        <li><a href="#" onclick="showProgram(81)">1. Single-row Subquery</a></li>
+                        <li><a href="#" onclick="showProgram(82)">2. Multi-row Subquery</a></li>
+                        </ul>
+                    </li>  
+            </ul>
+            </ul>
+                </ul>
+                
+            </ul>
+    </div>
+    
+    
+        <div class="code-output-container" id="output-container">
+            <!-- First query and output (Create Database) -->
+            <div class="code-container" id="code1">
+                <h2>Query</h2>
+                <h4>Creating databse</h4>
+                <pre><code><h3>Syntax:</h3>create database database_name;
+
+<h3>Ex:</h3>create database bca68;</code></pre>
+            </div>
+            <div class="output-container" id="output1">
+                <h2>Output</h2>
+                <pre><code>Query OK, 1 row affected (0.02 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| bca68              |
+| bca_68             |
+| ik                 |
+| information_schema |
+| mysql              |
+| new                |
+| performance_schema |
+| pggc11             |
+| sys                |
++--------------------+</code></pre>
+            </div>
+
+            <!-- Second query and output (Create Table) -->
+            <div class="code-container" id="code2">
+                <h2>Query</h2>
+                <h4>Creating table</h4>
+                <pre><code><h3>Syntax:</h3>create table table_name (
+                    column1 datatype [constraints],
+                    column2 datatype [constraints],
+                    column3 datatype [constraints],
+                    ...
+                );
+
+<h3>Ex:</h3> create table student(rollno int primary key,name varchar(30));</code></pre>
+            </div>
+            <div class="output-container" id="output2">
+                <h2>Output</h2>
+                <pre><code>Query OK, 0 rows affected (0.03 sec)</code></pre>
+            </div>
+
+            <!-- Third query and output (Drop Database) -->
+            <div class="code-container" id="code3">
+                <h2>Query</h2>
+                <h4>Dropping database</h4>
+                <pre><code>
+<h3>Syntax:</h3>
+drop database database_name;
+
+<h3>Ex:</h3>
+drop database bca68;</code></pre>
+            </div>
+            <div class="output-container" id="output3">
+                <h2>Output</h2>
+                <pre><code>
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| bca_68             |
+| ik                 |
+| information_schema |
+| mysql              |
+| new                |
+| performance_schema |
+| pggc11             |
+| sys                |
++--------------------+
+8 rows in set (0.00 sec)
+                </code></pre>
+            </div>
+
+            <!-- Fourth query and output (Drop Table) -->
+            <div class="code-container" id="code4">
+                <h2>Query</h2>
+                <h4>Dropping table</h4>
+                <pre><code><h3>Syntax:</h3>drop table table_name;
+
+<h3>Ex:</h3> drop table student;</code></pre>
+            </div>
+            <div class="output-container" id="output4">
+                <h2>Output</h2>
+                <pre><code>Query OK, 0 rows affected (0.03 sec)
+
+mysql> show tables;
++------------------------+
+| Tables_in_bca68        |
++------------------------+
+| another_table          |
+| some_other_table       |
++------------------------+
+2 rows in set (0.00 sec)
+                </code></pre>
+            </div>
+
+            <!-- Fifth query and output (Truncate Table) -->
+            <div class="code-container" id="code5">
+                <h2>Query</h2>
+                <h4>Truncating table</h4>
+                <pre><code>
+<h3>Syntax:</h3>
+truncate table table_name;
+
+<h3>Ex:</h3>
+truncate table student;</code></pre>
+            </div>
+            <div class="output-container" id="output5">
+                <h2>Output</h2>
+                <pre><code>Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from student;
+Empty set (0.00 sec)
+                </code></pre>
+            </div>
+
+            <!-- Alter Table with ADD query and output -->
+            <div class="code-container" id="code6">
+                <h2>Query</h2>
+                <h4>Adding column</h4>
+                <pre><code>
+<h3>Syntax:</h3>
+ALTER TABLE table_name 
+ADD column_name datatype;
+
+<h3>Ex:</h3>
+ALTER TABLE student 
+ADD email VARCHAR(100);
+                </code></pre>
+            </div>
+            <div class="output-container" id="output6">
+                <h2>Output</h2>
+                <pre><code>Query OK, 0 rows affected (0.02 sec)
+
+mysql> describe student;
++--------+-------------+---------+-------+---------+-------+
+| Field  | Type        | Null    | Key   | Default | Extra |
++--------+-------------+---------+-------+---------+-------+
+| rollno | int(11)     | NO      | PRI   | NULL    |       |
+| name   | varchar(30) | YES     |       | NULL    |       |
+| address| varchar(50) | YES     |       | NULL    |       |
+| email  | varchar(100)| YES     |       | NULL    |       |
++--------+-------------+---------+-------+---------+-------+
+4 rows in set (0.00 sec)
+                </code></pre>
+            </div>
+
+            <!-- Alter Table with MODIFY query and output -->
+            <div class="code-container" id="code7">
+                <h2>Query</h2>
+                <h4>Modifying column</h4>
+                <pre><code>
+<h3>Syntax:</h3>
+ALTER TABLE table_name 
+MODIFY column_name new_datatype;
+
+<h3>Ex:</h3>
+alter table student 
+modify email VARCHAR(200);
+                </code></pre>
+            </div>
+            <div class="output-container" id="output7">
+                <h2>Output</h2>
+                <pre><code>
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> describe student;
++--------+-------------+---------+-------+---------+-------+
+| Field  | Type        | Null    | Key   | Default | Extra |
++--------+-------------+---------+-------+---------+-------+
+| rollno | int(11)     | NO      | PRI   | NULL    |       |
+| name   | varchar(30) | YES     |       | NULL    |       |
+| address| varchar(50) | YES     |       | NULL    |       |
+| email  | varchar(200)| YES     |       | NULL    |       |
++--------+-------------+---------+-------+---------+-------+
+4 rows in set (0.00 sec)
+                </code></pre>
+            </div>
+
+            <!-- Sixth query and output (Insert One Row) -->
+            <div class="code-container" id="code8">
+                <h2>Query</h2>
+                <h4>Inserting a row</h4>
+                <pre><code>
+<h3>Syntax:</h3>
+insert into table_name (column1, column2, column3, ...) 
+values (value1, value2, value3, ...);
+
+<h3>Ex:</h3>
+insert into student (rollno, name) 
+values (101, 'John Doe');</code></pre>
+            </div>
+            <div class="output-container" id="output8">
+                <h2>Output</h2>
+                <pre><code>Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student;
++--------+-------------+------------------+
+| rollno | name        | address          |
++--------+-------------+------------------+
+| 101    | John Doe    | NULL             |
++--------+-------------+------------------+
+1 row in set (0.00 sec)
+                </code></pre>
+            </div>
+
+            <!-- Ninth query and output (Insert Multiple Rows) -->
+            <div class="code-container" id="code9">
+                <h2>Query</h2>
+                <h4>Inserting multiple rows</h4>
+                <pre><code>
+<h3>Syntax:</h3>
+insert into table_name (column1, column2, column3, ...) 
+values (value1, value2, value3, ...),
+       (value4, value5, value6, ...);
+
+<h3>Ex:</h3>
+insert into student (rollno, name, address) 
+values (102, 'Jane Doe', '123 Main St'),
+       (103, 'Alice Smith', '456 Oak Rd');</code></pre>
+            </div>
+            <div class="output-container" id="output9">
+                <h2>Output</h2>
+                <pre><code>Query OK, 2 rows affected (0.02 sec)
+
+mysql> select * from student;
++--------+-------------+------------------+
+| rollno | name        | address          |
++--------+-------------+------------------+
+| 101    | John Doe    | NULL             |
+| 102    | Jane Doe    | 123 Main St      |
+| 103    | Alice Smith | 456 Oak Rd       |
++--------+-------------+------------------+
+3 rows in set (0.00 sec)
+                </code></pre>
+            </div>
+
+            <!-- Tenth query and output (Insert Specific Columns) -->
+            <div class="code-container" id="code10">
+                <h2>Query</h2>
+                <h4>Inserting specific columns</h4>
+                <pre><code>
+<h3>Syntax:</h3>
+insert into table_name (column1, column2) 
+values (value1, value2);
+
+<h3>Ex:</h3>
+insert into student (name, address) 
+values ('Bob Marley', '789 Pine St');</code></pre>
+            </div>
+            <div class="output-container" id="output10">
+                <h2>Output</h2>
+                <pre><code>Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student;
++--------+-------------+------------------+
+| rollno | name        | address          |
++--------+-------------+------------------+
+| 101    | John Doe    | NULL             |
+| 102    | Jane Doe    | 123 Main St      |
+| 103    | Alice Smith | 456 Oak Rd       |
+| NULL   | Bob Marley  | 789 Pine St      |
++--------+-------------+------------------+
+4 rows in set (0.00 sec)
+                </code></pre>
+            </div>
+
+            <!-- Update Single Row Query -->
+<div class="code-container" id="code11">
+    <h2>Query</h2>
+    <h4>Updating one row</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
+
+<h3>Ex:</h3>
+update student
+set address = 'New Address, 1234 Elm St'
+where rollno = 101;</code></pre>
+</div>
+<div class="output-container" id="output11">
+    <h2>Output</h2>
+    <pre><code>
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student;
++--------+-------------+------------------------+
+| rollno | name        | address                |
++--------+-------------+------------------------+
+| 101    | John Doe    | New Address, 1234 Elm St |
+| 102    | Jane Doe    | 123 Main St            |
+| 103    | Alice Smith | 456 Oak Rd             |
++--------+-------------+------------------------+
+3 rows in set (0.00 sec)
+    </code></pre>
+</div>
+<!-- Update All Rows Query -->
+<div class="code-container" id="code12">
+    <h2>Query</h2>
+    <h4>Updating all rows</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+-- No WHERE condition, so all rows will be updated
+
+<h3>Ex:</h3>
+update student
+set address = 'New Address, 1234 Elm St';</code></pre>
+</div>
+<div class="output-container" id="output12">
+    <h2>Output</h2>
+    <pre><code>
+Query OK, 3 rows affected (0.02 sec)
+
+mysql> select * from student;
++--------+-------------+------------------------+
+| rollno | name        | address                |
++--------+-------------+------------------------+
+| 101    | John Doe    | New Address, 1234 Elm St |
+| 102    | Jane Doe    | New Address, 1234 Elm St |
+| 103    | Jim Beam    | New Address, 1234 Elm St |
++--------+-------------+------------------------+
+3 rows in set (0.00 sec)
+    </code></pre>
+</div>
+<!-- Update Multiple Rows Query -->
+<div class="code-container" id="code13">
+    <h2>Query</h2>
+    <h4>Updating multiple rows</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
+
+<h3>Ex:</h3>
+update student
+set address = 'New Address, 1234 Elm St'
+where rollno IN (101, 102);</code></pre>
+</div>
+<div class="output-container" id="output13">
+    <h2>Output</h2>
+    <pre><code>
+Query OK, 2 rows affected (0.02 sec)
+
+mysql> select * from student;
++--------+-------------+------------------------+
+| rollno | name        | address                |
++--------+-------------+------------------------+
+| 101    | John Doe    | New Address, 1234 Elm St |
+| 102    | Jane Doe    | New Address, 1234 Elm St |
+| 103    | Jim Beam    | NULL                   |
++--------+-------------+------------------------+
+3 rows in set (0.00 sec)
+    </code></pre>
+</div>
+<!-- Delete One Row Query -->
+<div class="code-container" id="code14">
+    <h2>Query</h2>
+    <h4>Deleting one row</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+DELETE FROM table_name
+WHERE condition;
+
+<h3>Ex:</h3>
+delete from student
+where rollno = 101;</code></pre>
+</div>
+<div class="output-container" id="output14">
+    <h2>Output</h2>
+    <pre><code>
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student;
++--------+-------------+------------------------+
+| rollno | name        | address                |
++--------+-------------+------------------------+
+| 102    | Jane Doe    | 5678 Oak St            |
+| 103    | Jim Beam    | NULL                   |
++--------+-------------+------------------------+
+2 rows in set (0.00 sec)
+    </code></pre>
+</div>
+<!-- Delete All Rows Query -->
+<div class="code-container" id="code15">
+    <h2>Query</h2>
+    <h4>Deleting all rows</h4>
+    <pre><code>
+<h3>Syntax for DELETE:</h3>
+DELETE FROM table_name;
+
+<h3>Ex:</h3>
+delete from student;
+</code></pre> 
+</div> 
+
+<div class="output-container" id="output15">
+    <h2>Output</h2>
+    <pre><code>
+-- After using DELETE:
+Query OK, 10 rows affected (0.02 sec)
+
+mysql> select * from student;
+Empty set (0.00 sec)
+    </code></pre>
+</div> 
+<div class="code-container" id="code16">
+    <h2>Query</h2>
+    <h4>Select Query</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition
+ORDER BY column_name;
+
+<h3>Ex:</h3>
+select name, rollno
+from students
+where age > 18
+order by name;
+    </code></pre>
+</div>
+<div class="output-container" id="output16">
+    <h2>Output</h2>
+    <pre><code>
+-- Example Output:
+
++------------+--------+
+| name       | rollno |
++------------+--------+
+| Jane Doe   | 102    |
+| Jim Beam   | 103    |
++------------+--------+
+2 rows in set (0.00 sec)
+    </code></pre>
+</div>
+<div class="code-container" id="code17">
+    <h2>Query</h2>
+    <h4>Granting privileges</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+GRANT privilege_type ON object TO user;
+
+<h3>Ex:</h3>
+grant select on employees TO 'john_doe';
+    </code></pre>
+</div>
+<div class="output-container" id="output17">
+    <h2>Output</h2>
+    <pre><code>Query OK, 0 rows affected (0.01 sec)
+
+mysql> show grants for 'john_doe'@'localhost';
++----------------------------------+
+| Grants for john_doe@localhost   |
++----------------------------------+
+| GRANT SELECT ON *.* TO 'john_doe'@'localhost' |
++----------------------------------+
+1 row in set (0.00 sec)
+    </code></pre>
+</div>
+<div class="code-container" id="code18">
+    <h2>Query</h2>
+    <h4>Revoking privileges</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+REVOKE privilege_type ON object FROM user;
+
+<h3>Ex:</h3>
+revoke select on employees from 'john_doe';
+    </code></pre>
+</div>
+<div class="output-container" id="output18">
+    <h2>Output</h2>
+    <pre><code>Query OK, 0 rows affected (0.01 sec)
+
+mysql> show grants for 'john_doe'@'localhost';
++----------------------------------+
+| Grants for john_doe@localhost   |
++----------------------------------+
+| GRANT ALL PRIVILEGES ON *.* TO 'john_doe'@'localhost' |
++----------------------------------+
+1 row in set (0.00 sec)
+    </code></pre>
+</div>
+<div class="code-container" id="code19">
+    <h2>Query</h2>
+    <h4>Committing a transaction</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+COMMIT;
+
+<h3>Ex:</h3>
+commit;
+    </code></pre>
+</div>
+<div class="output-container" id="output19">
+    <h2>Output</h2>
+    <pre><code>Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from student;
++--------+-------------+----------+
+| rollno | name        | address  |
++--------+-------------+----------+
+| 101    | John Doe    | NULL     |
+| 102    | Jane Doe    | 5678 Oak St |
++--------+-------------+----------+
+2 rows in set (0.00 sec)
+    </code></pre>
+</div>
+<div class="code-container" id="code20">
+    <h2>Query</h2>
+    <h4>Rolling back a transaction</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+ROLLBACK;
+
+<h3>Ex:</h3>
+rollback;
+    </code></pre>
+</div>
+<div class="output-container" id="output20">
+    <h2>Output</h2>
+    <pre><code>Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from student;
++--------+-------------+----------+
+| rollno | name        | address  |
++--------+-------------+----------+
+| 101    | John Doe    | NULL     |
+| 102    | Jane Doe    | 5678 Oak St |
+| 103    | Jim Beam    | NULL     |
++--------+-------------+----------+
+3 rows in set (0.00 sec)
+    </code></pre>
+</div>
+<div class="code-container" id="code21">
+    <h2>Query</h2>
+    <h4>Creating a primary key</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+CREATE TABLE table_name (
+    column1 datatype CONSTRAINT constraint_name PRIMARY KEY,
+    column2 datatype,
+    ...
+);
+
+<h3>Ex:</h3>
+create table student (
+    rollno int primary key,
+    name varchar(50),
+    address varchar(100)
+);
+    </code></pre>
+</div>
+<div class="output-container" id="output21">
+    <h2>Output</h2>
+    <pre><code>Query OK, 0 rows affected (0.03 sec)
+
+mysql> describe student;
++--------+-------------+---------+-------+---------+-------+
+| Field  | Type        | Null    | Key   | Default | Extra |
++--------+-------------+---------+-------+---------+-------+
+| rollno | int(11)     | NO      | PRI   | NULL    |       |
+| name   | varchar(50) | YES     |       | NULL    |       |
+| address| varchar(100)| YES     |       | NULL    |       |
++--------+-------------+---------+-------+---------+-------+
+3 rows in set (0.00 sec)
+    </code></pre>
+</div>
+<div class="code-container" id="code22">
+    <h2>Query</h2>
+    <h4>Creating a foreign key</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+CREATE TABLE table_name (
+    column1 datatype,
+    column2 datatype,
+    ...,
+    FOREIGN KEY (column_name) REFERENCES parent_table (parent_column)
+);
+
+<h3>Ex:</h3>
+create table student (
+    rollno int primary key,
+    name varchar(50),
+    address varchar(100)
+);
+
+create table enrollment (
+    enrollment_id int primary key,
+    rollno int,
+    course varchar(50),
+    foreign key (rollno) references student(rollno)
+);
+    </code></pre>
+</div>
+<div class="output-container" id="output22">
+    <h2>Output</h2>
+    <pre><code>Query OK, 0 rows affected (0.03 sec)
+
+mysql> describe enrollment;
++----------------+-------------+---------+-------+---------+-------+
+| Field          | Type        | Null    | Key   | Default | Extra |
++----------------+-------------+---------+-------+---------+-------+
+| enrollment_id  | int(11)     | NO      | PRI   | NULL    |       |
+| rollno         | int(11)     | YES     | MUL   | NULL    |       |
+| course         | varchar(50) | YES     |       | NULL    |       |
++----------------+-------------+---------+-------+---------+-------+
+3 rows in set (0.00 sec)
+    </code></pre>
+</div>
+<div class="code-container" id="code23">
+    <h2>Query</h2>
+    <h4>Creating a not null constraint</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+CREATE TABLE table_name (
+    column1 datatype not null,
+    column2 datatype not null,
+    ...
+);
+
+<h3>Ex:</h3>
+create table student (
+    rollno int primary key not null,
+    name varchar(50) not null,
+    address varchar(100) not null
+);
+    </code></pre>
+</div>
+<div class="output-container" id="output23">
+    <h2>output</h2>
+    <pre><code>query ok, 0 rows affected (0.03 sec)
+
+mysql> describe student;
++-----------+-------------+---------+-------+---------+-------+
+| field     | type        | null    | key   | default | extra |
++-----------+-------------+---------+-------+---------+-------+
+| rollno    | int(11)     | no      | pri   | null    |       |
+| name      | varchar(50) | no      |       | null    |       |
+| address   | varchar(100)| no      |       | null    |       |
++-----------+-------------+---------+-------+---------+-------+
+3 rows in set (0.00 sec)
+    </code></pre>
+</div>
+<div class="code-container" id="code24">
+    <h2>Query</h2>
+    <h4>Creating a unique constraint</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+create table table_name (
+    column1 datatype unique,
+    column2 datatype unique,
+    ...
+);
+
+<h3>Ex:</h3>
+create table student (
+    rollno int primary key not null,
+    name varchar(50) unique not null,
+    email varchar(100) unique not null
+);
+    </code></pre>
+</div>
+<div class="output-container" id="output24">
+    <h2>output</h2>
+    <pre><code>query ok, 0 rows affected (0.03 sec)
+
+mysql> describe student;
++-----------+-------------+---------+-------+---------+-------+
+| field     | type        | null    | key   | default | extra |
++-----------+-------------+---------+-------+---------+-------+
+| rollno    | int(11)     | no      | pri   | null    |       |
+| name      | varchar(50) | no      |       | null    |       |
+| email     | varchar(100)| no      |       | null    |       |
++-----------+-------------+---------+-------+---------+-------+
+3 rows in set (0.00 sec)
+    </code></pre>
+</div>
+<div class="code-container" id="code24">
+    <h2>Query</h2>
+    <h4>Creating a unique constraint</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+create table table_name (
+    column1 datatype unique,
+    column2 datatype unique,
+    ...
+);
+
+<h3>Ex:</h3>
+create table student (
+    rollno int primary key not null,
+    name varchar(50) unique not null,
+    email varchar(100) unique not null
+);
+    </code></pre>
+</div>
+<div class="output-container" id="output24">
+    <h2>output</h2>
+    <pre><code>query ok, 0 rows affected (0.03 sec)
+
+mysql> describe student;
++-----------+-------------+---------+-------+---------+-------+
+| field     | type        | null    | key   | default | extra |
++-----------+-------------+---------+-------+---------+-------+
+| rollno    | int(11)     | no      | pri   | null    |       |
+| name      | varchar(50) | no      |       | null    |       |
+| email     | varchar(100)| no      |       | null    |       |
++-----------+-------------+---------+-------+---------+-------+
+3 rows in set (0.00 sec)
+    </code></pre>
+</div>
+<div class="code-container" id="code25">
+    <h2>Query</h2>
+    <h4>Creating a check constraint</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+create table table_name (
+    column1 datatype check (condition),
+    column2 datatype check (condition),
+    ...
+);
+
+<h3>Ex:</h3>
+create table student (
+    rollno int primary key not null,
+    name varchar(50) not null,
+    age int check (age >= 18),  -- Enforcing that age must be 18 or more
+    salary decimal check (salary > 0)  -- Enforcing that salary must be greater than 0
+);
+    </code></pre>
+</div>
+
+<div class="output-container" id="output25">
+    <h2>Output</h2>
+    <pre><code>query ok, 0 rows affected (0.03 sec)
+
+mysql> describe student;
++-----------+-------------+---------+-------+---------+-------+
+| field     | type        | null    | key   | default | extra |
++-----------+-------------+---------+-------+---------+-------+
+| rollno    | int(11)     | no      | pri   | null    |       |
+| name      | varchar(50) | no      |       | null    |       |
+| age       | int(11)     | yes     |       | null    |       |
+| salary    | decimal(10,2) | yes   |       | null    |       |
++-----------+-------------+---------+-------+---------+-------+
+4 rows in set (0.00 sec)
+    </code></pre>
+</div>
+<div class="code-container" id="code26">
+    <h2>Query</h2>
+    <h4>Creating a default value</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+create table table_name (
+    column1 datatype default default_value,
+    column2 datatype default default_value,
+    ...
+);
+
+<h3>Ex:</h3>
+create table student (
+    rollno int primary key not null,
+    name varchar(50) not null,
+    age int default 18,  -- Default age is 18 if no value is provided
+    address varchar(100) default 'Unknown'  -- Default address is 'Unknown'
+);
+    </code></pre>
+</div>
+
+<div class="output-container" id="output26">
+    <h2>Output</h2>
+    <pre><code>query ok, 0 rows affected (0.03 sec)
+
+mysql> describe student;
++-----------+-------------+---------+-------+---------+-------+
+| field     | type        | null    | key   | default | extra |
++-----------+-------------+---------+-------+---------+-------+
+| rollno    | int(11)     | no      | pri   | null    |       |
+| name      | varchar(50) | no      |       | null    |       |
+| age       | int(11)     | yes     |       | 18      |       |
+| address   | varchar(100)| yes     |       | Unknown |       |
++-----------+-------------+---------+-------+---------+-------+
+4 rows in set (0.00 sec)
+    </code></pre>
+</div>
+<div class="code-container" id="code27">
+    <h2>Query</h2>
+    <h4>Creating a foreign key with ON DELETE CASCADE</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+create table student (
+    id int auto_increment primary key,
+    name varchar(50)
+);
+
+create table enrollment (
+    enrollment_id int auto_increment primary key,
+    student_id int,
+    course_name varchar(50),
+    foreign key (student_id) references student(id) on delete cascade
+);
+
+<h3>Ex:</h3>
+-- Create `student` table
+create table student (
+    id int auto_increment primary key,
+    name varchar(50)
+);
+
+-- Create `enrollment` table with foreign key on `student_id`
+create table enrollment (
+    enrollment_id int auto_increment primary key,
+    student_id int,
+    course_name varchar(50),
+    foreign key (student_id) references student(id) on delete cascade
+);
+
+-- Insert some sample data into the `student` table
+insert into student (name) values ('John Doe');
+insert into student (name) values ('Jane Smith');
+
+-- Insert some sample data into the `enrollment` table
+insert into enrollment (student_id, course_name) values (1, 'Math');
+insert into enrollment (student_id, course_name) values (1, 'Science');
+insert into enrollment (student_id, course_name) values (2, 'History');
+
+-- Display data in the tables
+select * from student;
+select * from enrollment;
+
+-- Delete a student (to test ON DELETE CASCADE)
+delete from student where id = 1;
+
+-- Display data again after the delete
+select * from student;
+select * from enrollment;
+    </code></pre>
+</div>
+
+<div class="output-container" id="output27">
+    <h2>Output</h2>
+    <pre><code>
+-- Before delete
+mysql> select * from student;
++----+--------------+
+| id | name         |
++----+--------------+
+|  1 | John Doe     |
+|  2 | Jane Smith   |
++----+--------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from enrollment;
++----------------+------------+-------------+
+| enrollment_id  | student_id | course_name |
++----------------+------------+-------------+
+| 1              | 1          | Math        |
+| 2              | 1          | Science     |
+| 3              | 2          | History     |
++----------------+------------+-------------+
+3 rows in set (0.00 sec)
+
+-- After delete
+mysql> delete from student where id = 1;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student;
++----+--------------+
+| id | name         |
++----+--------------+
+|  2 | Jane Smith   |
++----+--------------+
+1 row in set (0.00 sec)
+
+mysql> select * from enrollment;
++----------------+------------+-------------+
+| enrollment_id  | student_id | course_name |
++----------------+------------+-------------+
+| 3              | 2          | History     |
++----------------+------------+-------------+
+1 row in set (0.00 sec)
+    </code></pre>
+</div>
+<div class="code-container" id="code28">
+    <h2>Query</h2>
+    <h4>Creating a foreign key with ON DELETE SET NULL</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+create table student (
+    id int auto_increment primary key,
+    name varchar(50)
+);
+
+create table enrollment (
+    enrollment_id int auto_increment primary key,
+    student_id int,
+    course_name varchar(50),
+    foreign key (student_id) references student(id) on delete set null
+);
+
+<h3>Ex:</h3>
+-- Create `student` table
+create table student (
+    id int auto_increment primary key,
+    name varchar(50)
+);
+
+-- Create `enrollment` table with foreign key on `student_id`
+create table enrollment (
+    enrollment_id int auto_increment primary key,
+    student_id int,
+    course_name varchar(50),
+    foreign key (student_id) references student(id) on delete set null
+);
+
+-- Insert some sample data into the `student` table
+insert into student (name) values ('John Doe');
+insert into student (name) values ('Jane Smith');
+
+-- Insert some sample data into the `enrollment` table
+insert into enrollment (student_id, course_name) values (1, 'Math');
+insert into enrollment (student_id, course_name) values (1, 'Science');
+insert into enrollment (student_id, course_name) values (2, 'History');
+
+-- Display data in the tables
+select * from student;
+select * from enrollment;
+
+-- Delete a student (to test ON DELETE SET NULL)
+delete from student where id = 1;
+
+-- Display data again after the delete
+select * from student;
+select * from enrollment;
+    </code></pre>
+</div>
+
+<div class="output-container" id="output28">
+    <h2>Output</h2>
+    <pre><code>
+-- Before delete
+mysql> select * from student;
++----+--------------+
+| id | name         |
++----+--------------+
+|  1 | John Doe     |
+|  2 | Jane Smith   |
++----+--------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from enrollment;
++----------------+------------+-------------+
+| enrollment_id  | student_id | course_name |
++----------------+------------+-------------+
+| 1              | 1          | Math        |
+| 2              | 1          | Science     |
+| 3              | 2          | History     |
++----------------+------------+-------------+
+3 rows in set (0.00 sec)
+
+-- After delete
+mysql> delete from student where id = 1;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student;
++----+--------------+
+| id | name         |
++----+--------------+
+|  2 | Jane Smith   |
++----+--------------+
+1 row in set (0.00 sec)
+
+mysql> select * from enrollment;
++----------------+------------+-------------+
+| enrollment_id  | student_id | course_name |
++----------------+------------+-------------+
+| 1              | NULL       | Math        |
+| 2              | NULL       | Science     |
+| 3              | 2          | History     |
++----------------+------------+-------------+
+3 rows in set (0.00 sec)
+    </code></pre>
+</div>
+<div class="code-container" id="code53">
+    <h2>Query</h2>
+    <h4>Creating a foreign key with ON UPDATE CASCADE</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+create table student (
+    id int auto_increment primary key,
+    name varchar(50)
+);
+
+create table enrollment (
+    enrollment_id int auto_increment primary key,
+    student_id int,
+    course_name varchar(50),
+    foreign key (student_id) references student(id) on update cascade
+);
+
+<h3>Ex:</h3>
+-- Create `student` table
+create table student (
+    id int auto_increment primary key,
+    name varchar(50)
+);
+
+-- Create `enrollment` table with foreign key on `student_id`
+create table enrollment (
+    enrollment_id int auto_increment primary key,
+    student_id int,
+    course_name varchar(50),
+    foreign key (student_id) references student(id) on update cascade
+);
+
+-- Insert some sample data into the `student` table
+insert into student (name) values ('John Doe');
+insert into student (name) values ('Jane Smith');
+
+-- Insert some sample data into the `enrollment` table
+insert into enrollment (student_id, course_name) values (1, 'Math');
+insert into enrollment (student_id, course_name) values (1, 'Science');
+insert into enrollment (student_id, course_name) values (2, 'History');
+
+-- Display data in the tables
+select * from student;
+select * from enrollment;
+
+-- Update the student ID (to test ON UPDATE CASCADE)
+update student set id = 10 where name = 'John Doe';
+
+-- Display data again after the update
+select * from student;
+select * from enrollment;
+    </code></pre>
+</div>
+
+<div class="output-container" id="output53">
+    <h2>Output</h2>
+    <pre><code>
+-- Before update
+mysql> select * from student;
++----+--------------+
+| id | name         |
++----+--------------+
+|  1 | John Doe     |
+|  2 | Jane Smith   |
++----+--------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from enrollment;
++----------------+------------+-------------+
+| enrollment_id  | student_id | course_name |
++----------------+------------+-------------+
+| 1              | 1          | Math        |
+| 2              | 1          | Science     |
+| 3              | 2          | History     |
++----------------+------------+-------------+
+3 rows in set (0.00 sec)
+
+-- After update
+mysql> update student set id = 10 where name = 'John Doe';
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student;
++----+--------------+
+| id | name         |
++----+--------------+
+| 10 | John Doe     |
+|  2 | Jane Smith   |
++----+--------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from enrollment;
++----------------+------------+-------------+
+| enrollment_id  | student_id | course_name |
++----------------+------------+-------------+
+| 1              | 10         | Math        |
+| 2              | 10         | Science     |
+| 3              |  2         | History     |
++----------------+------------+-------------+
+3 rows in set (0.00 sec)
+    </code></pre>
+</div>
+<div class="code-container" id="code52">
+    <h2>Query</h2>
+    <h4>Creating a foreign key with ON UPDATE SET NULL</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+create table student (
+    id int auto_increment primary key,
+    name varchar(50)
+);
+
+create table enrollment (
+    enrollment_id int auto_increment primary key,
+    student_id int,
+    course_name varchar(50),
+    foreign key (student_id) references student(id) on update set null
+);
+
+<h3>Ex:</h3>
+-- Create `student` table
+create table student (
+    id int auto_increment primary key,
+    name varchar(50)
+);
+
+-- Create `enrollment` table with foreign key on `student_id`
+create table enrollment (
+    enrollment_id int auto_increment primary key,
+    student_id int,
+    course_name varchar(50),
+    foreign key (student_id) references student(id) on update set null
+);
+
+-- Insert some sample data into the `student` table
+insert into student (name) values ('John Doe');
+insert into student (name) values ('Jane Smith');
+
+-- Insert some sample data into the `enrollment` table
+insert into enrollment (student_id, course_name) values (1, 'Math');
+insert into enrollment (student_id, course_name) values (1, 'Science');
+insert into enrollment (student_id, course_name) values (2, 'History');
+
+-- Display data in the tables
+select * from student;
+select * from enrollment;
+
+-- Update the student ID (to test ON UPDATE SET NULL)
+update student set id = 10 where name = 'John Doe';
+
+-- Display data again after the update
+select * from student;
+select * from enrollment;
+    </code></pre>
+</div>
+
+<div class="output-container" id="output52">
+    <h2>Output</h2>
+    <pre><code>
+-- Before update
+mysql> select * from student;
++----+--------------+
+| id | name         |
++----+--------------+
+|  1 | John Doe     |
+|  2 | Jane Smith   |
++----+--------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from enrollment;
++----------------+------------+-------------+
+| enrollment_id  | student_id | course_name |
++----------------+------------+-------------+
+| 1              | 1          | Math        |
+| 2              | 1          | Science     |
+| 3              | 2          | History     |
++----------------+------------+-------------+
+3 rows in set (0.00 sec)
+
+-- After update
+mysql> update student set id = 10 where name = 'John Doe';
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student;
++----+--------------+
+| id | name         |
++----+--------------+
+| 10 | John Doe     |
+|  2 | Jane Smith   |
++----+--------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from enrollment;
++----------------+------------+-------------+
+| enrollment_id  | student_id | course_name |
++----------------+------------+-------------+
+| 1              | NULL       | Math        |
+| 2              | NULL       | Science     |
+| 3              |  2         | History     |
++----------------+------------+-------------+
+3 rows in set (0.00 sec)
+    </code></pre>
+</div>
+<!-- comparison operator (=) equal to -->
+<div class="code-container" id="code29">
+    <h2>Query</h2>
+    <h4>Comparison operator (=)</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT column_name(s)
+FROM table_name
+WHERE column_name = value;
+
+<h3>Ex:</h3>
+mysql> select * from marks where m1=76;
+    </code></pre>
+</div>
+<div class="output-container" id="output29">
+    <h2>Output</h2>
+    <pre><code>
++------+--------+------+------+------+------+ 
+| name | rollno | m1   | m2   | m3   | m4   |
++------+--------+------+------+------+------+
+| riya |   4067 |   76 | NULL |   67 | NULL |
+| riya |   4067 |   76 |   67 |   67 |   80 |
++------+--------+------+------+------+------+
+2 rows in set (0.00 sec)
+    </code></pre>
+</div>
+        
+<!-- comparison operator (!= or <>) not equal to -->
+<div class="code-container" id="code30">
+    <h2>Query</h2>
+    <h4>Comparison operator (!= or &lt;&gt;)</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT column_name(s)
+FROM table_name
+WHERE column_name <> value;
+
+<h3>Ex:</h3>
+mysql> select * from marks where m1 <> 76;
+    </code></pre>
+</div>
+<div class="output-container" id="output30">
+    <h2>Output</h2>
+    <pre><code>
++---------+--------+------+------+------+------+
+| name    | rollno | m1   | m2   | m3   | m4   |
++---------+--------+------+------+------+------+
+| manjot  |   4103 |   70 |   60 |   50 |   80 |
+| ritu    |   4068 |   67 |   78 |   80 |   45 |
+| tiya    |   4098 |   45 |   56 | NULL | NULL |
+| jasleen |   4056 |   90 |   90 |   90 | NULL |
++---------+--------+------+------+------+------+
+4 rows in set (0.00 sec)
+    </code></pre>
+</div>
+
+<!-- comparison operator (>) greater than -->
+<div class="code-container" id="code31">
+    <h2>Query</h2>
+    <h4>Comparison operator (&gt;)</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT column_name(s)
+FROM table_name
+WHERE column_name > value;
+
+<h3>Ex:</h3>
+mysql> select * from marks where m1 > 80;
+    </code></pre>
+</div>
+<div class="output-container" id="output31">
+    <h2>Output</h2>
+    <pre><code>
++---------+--------+------+------+------+------+
+| name    | rollno | m1   | m2   | m3   | m4   |
++---------+--------+------+------+------+------+
+| jasleen |   4056 |   90 |   90 |   90 | NULL |
++---------+--------+------+------+------+------+
+1 row in set (0.00 sec)
+    </code></pre>
+</div>
+
+<!-- comparison operator (<) less than -->
+<div class="code-container" id="code32">
+    <h2>Query</h2>
+    <h4>Comparison operator (&lt;)</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT column_name(s)
+FROM table_name
+WHERE column_name < value;
+
+<h3>Ex:</h3>
+mysql> select * from marks where m2 < 70;
+    </code></pre>
+</div>
+<div class="output-container" id="output32">
+    <h2>Output</h2>
+    <pre><code>
++--------+--------+------+------+------+------+
+| name   | rollno | m1   | m2   | m3   | m4   |
++--------+--------+------+------+------+------+
+| manjot |   4103 |   70 |   60 |   50 |   80 |
+| riya   |   4067 |   76 |   67 |   67 |   80 |
+| tiya   |   4098 |   45 |   56 | NULL | NULL |
++--------+--------+------+------+------+------+
+3 rows in set (0.00 sec)
+    </code></pre>
+</div>
+
+<!-- comparison operator (>=) greater than or equal to -->
+<div class="code-container" id="code33">
+    <h2>Query</h2>
+    <h4>Comparison operator (&gt;=)</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT column_name(s)
+FROM table_name
+WHERE column_name >= value;
+
+<h3>Ex:</h3>
+mysql> select * from marks where m1 >= 70;
+    </code></pre>
+</div>
+<div class="output-container" id="output33">
+    <h2>Output</h2>
+    <pre><code>
++---------+--------+------+------+------+------+
+| name    | rollno | m1   | m2   | m3   | m4   |
++---------+--------+------+------+------+------+
+| manjot  |   4103 |   70 |   60 |   50 |   80 |
+| riya    |   4067 |   76 | NULL |   67 | NULL |
+| riya    |   4067 |   76 |   67 |   67 |   80 |
+| jasleen |   4056 |   90 |   90 |   90 | NULL |
++---------+--------+------+------+------+------+
+4 rows in set (0.00 sec)
+    </code></pre>
+</div>
+
+<!-- comparison operator (<=) less than or equal to -->
+<div class="code-container" id="code34">
+    <h2>Query</h2>
+    <h4>Comparison operator (&lt;=)</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT column_name(s)
+FROM table_name
+WHERE column_name <= value;
+
+<h3>Ex:</h3>
+mysql> select * from marks where m3 <= 67;
+    </code></pre>
+</div>
+<div class="output-container" id="output34">
+    <h2>Output</h2>
+    <pre><code>
++--------+--------+------+------+------+------+
+| name   | rollno | m1   | m2   | m3   | m4   |
++--------+--------+------+------+------+------+
+| manjot |   4103 |   70 |   60 |   50 |   80 |
+| riya   |   4067 |   76 | NULL |   67 | NULL |
+| riya   |   4067 |   76 |   67 |   67 |   80 |
++--------+--------+------+------+------+------+
+3 rows in set (0.00 sec)
+    </code></pre>
+</div>
+<!-- comparison operator (IN) check value -->
+<div class="code-container" id="code35">
+    <h2>Query</h2>
+    <h4>Comparison operator (IN)</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT column_name(s)
+FROM table_name
+WHERE column_name IN (value1, value2, value3, ...);
+
+<h3>Ex:</h3>
+mysql> SELECT * FROM STD WHERE grade IN ('a', 'c');
+    </code></pre>
+</div>
+<div class="output-container" id="output35">
+    <h2>Output</h2>
+    <pre><code>
++--------+---------+-------+
+| rollno | name    | grade |
++--------+---------+-------+
+|      1 | bhumika | a     |
+|      3 | ritu    | a     |
+|      4 | riya    | c     |
++--------+---------+-------+
+3 rows in set (0.00 sec)
+    </code></pre>
+</div>
+
+<!-- comparison operator (NOT IN) check value is not -->
+<div class="code-container" id="code36">
+    <h2>Query</h2>
+    <h4>Comparison operator (NOT IN)</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT column_name(s)
+FROM table_name
+WHERE column_name NOT IN (value1, value2, value3, ...);
+
+<h3>Ex:</h3>
+mysql> SELECT * FROM STD WHERE grade NOT IN ('a', 'c');
+    </code></pre>
+</div>
+<div class="output-container" id="output36">
+    <h2>Output</h2>
+    <pre><code>
++--------+--------+-------+
+| rollno | name   | grade |
++--------+--------+-------+
+|      2 | manjot | b     |
++--------+--------+-------+
+1 row in set (0.00 sec)
+    </code></pre>
+</div>
+
+<!-- comparison operator (LIKE) search for specific pattern -->
+<div class="code-container" id="code37">
+    <h2>Query</h2>
+    <h4>Comparison operator (LIKE)</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT column_name(s)
+FROM table_name
+WHERE column_name LIKE pattern;
+
+<h3>Ex:</h3>
+mysql> select * from STD where name LIKE 'r%';
+mysql> select * from STD where name LIKE '_______';
+    </code></pre>
+</div>
+<div class="output-container" id="output37">
+    <h2>Output</h2>
+    <pre><code>
+-- Ex 1 (%)
++--------+------+-------+
+| rollno | name | grade |
++--------+------+-------+
+|      3 | ritu | a     |
+|      4 | riya | c     |
++--------+------+-------+
+2 rows in set (0.00 sec)
+
+-- Ex 2 (_)
++--------+---------+-------+
+| rollno | name    | grade |
++--------+---------+-------+
+|      1 | bhumika | a     |
++--------+---------+-------+
+1 row in set (0.00 sec)
+    </code></pre>
+</div>
+
+<!-- comparison operator (IS NULL) check NULL value -->
+<div class="code-container" id="code38">
+    <h2>Query</h2>
+    <h4>Comparison operator (IS NULL)</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT column_name(s) 
+FROM table_name 
+WHERE column_name IS NULL;
+
+<h3>Ex:</h3>
+mysql> select * from marks where m4 IS NULL;
+    </code></pre>
+</div>
+<div class="output-container" id="output38">
+    <h2>Output</h2>
+    <pre><code>
++---------+--------+------+------+------+------+ 
+| name    | rollno | m1   | m2   | m3   | m4   |
++---------+--------+------+------+------+------+ 
+| riya    |   4067 |   76 | NULL |   67 | NULL | 
+| tiya    |   4098 |   45 |   56 | NULL | NULL | 
+| jasleen |   4056 |   90 |   90 |   90 | NULL | 
++---------+--------+------+------+------+------+
+3 rows in set (0.00 sec)
+    </code></pre>
+</div>
+
+<!-- comparison operator (IS NOT NULL) check NULL value -->
+<div class="code-container" id="code39">
+    <h2>Query</h2>
+    <h4>Comparison operator (IS NOT NULL)</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT column_name(s)
+FROM table_name
+WHERE column_name IS NOT NULL;
+
+<h3>Ex:</h3>
+mysql> select * from marks where m4 IS NOT NULL;
+    </code></pre>
+</div>
+<div class="output-container" id="output39">
+    <h2>Output</h2>
+    <pre><code>
++--------+--------+------+------+------+------+
+| name   | rollno | m1   | m2   | m3   | m4   |
++--------+--------+------+------+------+------+
+| manjot |   4103 |   70 |   60 |   50 |   80 |
+| riya   |   4067 |   76 |   67 |   67 |   80 |
+| ritu   |   4068 |   67 |   78 |   80 |   45 |
++--------+--------+------+------+------+------+
+3 rows in set (0.00 sec)
+    </code></pre>
+</div>
+
+<!-- logical operator (AND) Returns true if both conditions are true -->
+<div class="code-container" id="code40">
+    <h2>Query</h2>
+    <h4>Logical operator (AND)</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT column_name(s)
+FROM table_name
+WHERE condition1 AND condition2 AND ...;
+
+<h3>Ex:</h3>
+mysql> select * from marks where name='riya' AND m1=76;
+    </code></pre>
+</div>
+<div class="output-container" id="output40">
+    <h2>Output</h2>
+    <pre><code>
++------+--------+------+------+------+------+
+| name | rollno | m1   | m2   | m3   | m4   |
++------+--------+------+------+------+------+
+| riya |   4067 |   76 | NULL |   67 | NULL |
+| riya |   4067 |   76 |   67 |   67 |   80 |
++------+--------+------+------+------+------+
+2 rows in set (0.00 sec)
+    </code></pre>
+</div>
+<!-- logical operator (OR): Returns true if at least one condition is true -->
+<div class="code-container" id="code41">
+    <h2>Query</h2>
+    <h4>Logical operator (OR)</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT column_name(s)
+FROM table_name
+WHERE condition1 OR condition2 OR ...;
+
+<h3>Ex:</h3>
+mysql> select * from std where grade='A' OR age=20;
+    </code></pre>
+</div>
+<div class="output-container" id="output41">
+    <h2>Output</h2>
+    <pre><code>
++--------+-------+------+-------+
+| rollno | name  | age  | grade |
++--------+-------+------+-------+
+|      1 | Alice |   20 | A     |
+|      4 | David |   20 | A     |
++--------+-------+------+-------+
+2 rows in set (0.00 sec)
+    </code></pre>
+</div>
+
+<!-- logical operator (NOT): Reverses the result of a condition -->
+<div class="code-container" id="code42">
+    <h2>Query</h2>
+    <h4>Logical operator (NOT)</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT column_name(s)
+FROM table_name
+WHERE column_name NOT IN (value1, value2, value3, ...);
+
+<h3>Ex:</h3>
+mysql> SELECT * FROM STD WHERE grade NOT IN ('a', 'c');
+
+(NOT IS, NOT LIKE, NOT BETWEEN)
+    </code></pre>
+</div>
+<div class="output-container" id="output42">
+    <h2>Output</h2>
+    <pre><code>
++--------+--------+-------+
+| rollno | name   | grade |
++--------+--------+-------+
+|      2 | manjot | b     |
++--------+--------+-------+
+1 row in set (0.00 sec)
+    </code></pre>
+</div>
+
+<!-- aggregate operator (COUNT): Returns the number of rows -->
+<div class="code-container" id="code43">
+    <h2>Query</h2>
+    <h4>Aggregate operator (COUNT)</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT COUNT(expression) FROM table_name WHERE condition;
+
+<h3>Ex:</h3>
+mysql> select count(*) from marks;
+    </code></pre>
+</div>
+<div class="output-container" id="output43">
+    <h2>Output</h2>
+    <pre><code>
++----------+
+| count(*) |
++----------+
+|        6 |
++----------+
+1 row in set (0.01 sec)
+    </code></pre>
+</div>
+
+<!-- aggregate operator (SUM()): Returns the sum of a numeric column -->
+<div class="code-container" id="code44">
+    <h2>Query</h2>
+    <h4>Aggregate operator (SUM)</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT SUM(expression) FROM table_name WHERE condition;
+
+<h3>Ex:</h3>
+mysql> select sum(age) from std;
+    </code></pre>
+</div>
+<div class="output-container" id="output44">
+    <h2>Output</h2>
+    <pre><code>
++----------+
+| sum(age) |
++----------+
+|       83 |
++----------+
+1 row in set (0.00 sec)
+    </code></pre>
+</div>
+
+<!-- aggregate operator (AVG()): Returns the average value of a numeric column -->
+<div class="code-container" id="code45">
+    <h2>Query</h2>
+    <h4>Aggregate operator (AVG)</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT AVG(expression) FROM table_name WHERE condition;
+
+<h3>Ex:</h3>
+mysql> select avg(age) from std;
+    </code></pre>
+</div>
+<div class="output-container" id="output45">
+    <h2>Output</h2>
+    <pre><code>
++----------+
+| avg(age) |
++----------+
+|  20.7500 |
++----------+
+1 row in set (0.00 sec)
+    </code></pre>
+</div>
+
+<!-- aggregate operator (MIN()): Returns the smallest value -->
+<div class="code-container" id="code46">
+    <h2>Query</h2>
+    <h4>Aggregate operator (MIN)</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT MIN(expression) FROM table_name WHERE condition;
+
+<h3>Ex:</h3>
+mysql> select min(age) from std;
+    </code></pre>
+</div>
+<div class="output-container" id="output46">
+    <h2>Output</h2>
+    <pre><code>
++----------+
+| min(age) |
++----------+
+|       20 |
++----------+
+1 row in set (0.00 sec)
+    </code></pre>
+</div>
+
+<!-- aggregate operator (MAX()): Returns the largest value -->
+<div class="code-container" id="code47">
+    <h2>Query</h2>
+    <h4>Aggregate operator (MAX)</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT MAX(expression) FROM table_name WHERE condition;
+
+<h3>Ex:</h3>
+mysql> select max(age) from std;
+    </code></pre>
+</div>
+<div class="output-container" id="output47">
+    <h2>Output</h2>
+    <pre><code>
++----------+
+| max(age) |
++----------+
+|       22 |
++----------+
+1 row in set (0.00 sec)
+    </code></pre>
+</div>
+
+<!-- set operator (UNION): Combines the results of two queries (removes duplicates) -->
+<div class="code-container" id="code48">
+    <h2>Query</h2>
+    <h4>Set operator (UNION)</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT column1, column2, ... FROM table1
+UNION
+SELECT column1, column2, ... FROM table2;
+
+<h3>Ex:</h3>
+mysql> select name, age, grade from std UNION select name, age, grade from STD2;
+    </code></pre>
+</div>
+<div class="output-container" id="output48">
+    <h2>Output</h2>
+    <pre><code>
++---------+------+-------+
+| name    | age  | grade |
++---------+------+-------+
+| Alice   |   20 | A     |
+| Bob     |   21 | B     |
+| Charlie |   22 | B     |
+| David   |   20 | A     |
+| Bhumika |   19 | A     |
+| Manjot  |   19 | B     |
+| Ritu    |   21 | C     |
++---------+------+-------+
+7 rows in set (0.00 sec)
+    </code></pre>
+</div>
+<!-- set operator (UNION ALL): Combines (keeps duplicates) -->
+<div class="code-container" id="code49">
+    <h2>Query</h2>
+    <h4>Set operator (UNION ALL)</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT column1, column2, ... FROM table1
+UNION ALL
+SELECT column1, column2, ... FROM table2;
+
+<h3>Ex:</h3>
+mysql> select name, age, grade from std UNION ALL select name, age, grade from STD2;
+    </code></pre>
+</div>
+<div class="output-container" id="output49">
+    <h2>Output</h2>
+    <pre><code>
++---------+------+-------+
+| name    | age  | grade |
++---------+------+-------+
+| Alice   |   20 | A     |
+| Bob     |   21 | B     |
+| Charlie |   22 | B     |
+| David   |   20 | A     |
+| Alice   |   20 | A     |
+| Bhumika |   19 | A     |
+| Manjot  |   19 | B     |
+| David   |   20 | A     |
+| Ritu    |   21 | C     |
++---------+------+-------+
+9 rows in set (0.00 sec)
+    </code></pre>
+</div>
+
+<!-- set operator (INTERSECT): Returns only the rows that are common between the two SELECT queries -->
+<div class="code-container" id="code50">
+    <h2>Query</h2>
+    <h4>Set operator (INTERSECT)</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+
+SELECT column1, column2, ... 
+FROM table1
+INTERSECT
+SELECT column1, column2, ... 
+FROM table2;
+
+<h3>Ex:</h3>
+mysql> select name, age, grade from std INTERSECT select name, age, grade from STD2;
+    </code></pre>
+</div>
+<div class="output-container" id="output50">
+    <h2>Output</h2>
+    <pre><code>
++-------+------+-------+
+| name  | age  | grade |
++-------+------+-------+
+| Alice |   20 | A     |
+| David |   20 | A     |
++-------+------+-------+
+2 rows in set (0.00 sec)
+    </code></pre>
+</div>
+
+<!-- set operator (EXCEPT/MINUS): Returns rows from the first query that are not in the second query -->
+<div class="code-container" id="code51">
+    <h2>Query</h2>
+    <h4>Set operator (EXCEPT/MINUS)</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+
+SELECT column1, column2, ...
+FROM table1
+MINUS(EXCEPT)
+SELECT column1, column2, ...
+FROM table2;
+
+<h3>Ex:</h3>
+mysql> select name, age, grade from std except select name, age, grade from STD2;
+    </code></pre>
+</div>
+<div class="output-container" id="output51">
+    <h2>Output</h2>
+    <pre><code>
++---------+------+-------+
+| name    | age  | grade |
++---------+------+-------+
+| Bob     |   21 | B     |
+| Charlie |   22 | B     |
++---------+------+-------+
+2 rows in set (0.00 sec)
+    </code></pre>
+</div>
+<div class="code-container" id="code54">
+    <h2>Query</h2>
+    <h4>WHERE Clause</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
+
+<h3>Ex:</h3>
+mysql> SELECT * FROM Students WHERE CourseID = 'C1';
+    </code></pre>
+</div>
+<div class="output-container" id="output54">
+    <h2>Output</h2>
+    <pre><code>
++--------+-------+----------+
+| RollNo | Name  | CourseID |
++--------+-------+----------+
+|   4100 | Lucky | C1       |
++--------+-------+----------+
+1 row in set (0.00 sec)
+    </code></pre>
+</div>         
+   <!-- GROUP BY Clause -->
+<div class="code-container" id="code55">
+    <h2>Query</h2>
+    <h4>GROUP BY Clause</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT column1, COUNT(*) 
+FROM table_name
+GROUP BY column1;
+
+<h3>Ex:</h3>
+mysql> SELECT CourseID, COUNT(*) AS StudentCount FROM Students GROUP BY CourseID;
+    </code></pre>
+</div>
+<div class="output-container" id="output55">
+    <h2>Output</h2>
+    <pre><code>
++----------+--------------+
+| CourseID | StudentCount |
++----------+--------------+
+| C1       |            1 |
+| C2       |            1 |
+| C3       |            1 |
+| NULL     |            1 |
++----------+--------------+
+4 rows in set (0.01 sec)
+    </code></pre>
+</div>
+
+<!-- HAVING Clause -->
+<div class="code-container" id="code56">
+    <h2>Query</h2>
+    <h4>HAVING Clause</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT column1, COUNT(*)
+FROM table_name
+GROUP BY column1
+HAVING COUNT(*) > value;
+
+<h3>Ex:</h3>
+mysql> SELECT CourseID, COUNT(*) AS StudentCount FROM Students 
+GROUP BY CourseID HAVING COUNT(*) > 0;
+    </code></pre>
+</div>
+<div class="output-container" id="output56">
+    <h2>Output</h2>
+    <pre><code>
++----------+--------------+
+| CourseID | StudentCount |
++----------+--------------+
+| C1       |            1 |
+| C2       |            1 |
+| C3       |            1 |
+| NULL     |            1 |
++----------+--------------+
+4 rows in set (0.00 sec)
+    </code></pre>
+</div>
+
+<!-- ORDER BY Clause -->
+<div class="code-container" id="code57">
+    <h2>Query</h2>
+    <h4>ORDER BY Clause</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT column1, column2
+FROM table_name
+ORDER BY column1 [ASC|DESC];
+
+<h3>Ex:</h3>
+mysql> SELECT * FROM Students ORDER BY Name ASC;
+    </code></pre>
+</div>
+<div class="output-container" id="output57">
+    <h2>Output</h2>
+    <pre><code>
++--------+-------+----------+
+| RollNo | Name  | CourseID |
++--------+-------+----------+
+|   4102 | Ajay  | C2       |
+|   4100 | Lucky | C1       |
+|   4103 | Mahi  | C3       |
+|   4104 | Neha  | NULL     |
++--------+-------+----------+
+4 rows in set (0.00 sec)
+    </code></pre>
+</div>
+
+<!-- LIMIT Clause -->
+<div class="code-container" id="code58">
+    <h2>Query</h2>
+    <h4>LIMIT Clause</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT column1, column2
+FROM table_name
+LIMIT number;
+
+<h3>Ex:</h3>
+mysql> SELECT * FROM Students LIMIT 2;
+    </code></pre>
+</div>
+<div class="output-container" id="output58">
+    <h2>Output</h2>
+    <pre><code>
++--------+-------+----------+
+| RollNo | Name  | CourseID |
++--------+-------+----------+
+|   4100 | Lucky | C1       |
+|   4102 | Ajay  | C2       |
++--------+-------+----------+
+2 rows in set (0.00 sec)
+    </code></pre>
+</div>
+
+<!-- FROM Clause -->
+<div class="code-container" id="code59">
+    <h2>Query</h2>
+    <h4>FROM Clause</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT column1, column2
+FROM table_name;
+
+<h3>Ex:</h3>
+mysql> SELECT Name FROM Students;
+    </code></pre>
+</div>
+<div class="output-container" id="output59">
+    <h2>Output</h2>
+    <pre><code>
++-------+
+| Name  |
++-------+
+| Lucky |
+| Ajay  |
+| Mahi  |
+| Neha  |
++-------+
+4 rows in set (0.00 sec)
+    </code></pre>
+</div>
+<div class="code-container" id="code60">
+    <h2>Query</h2>
+    <h4>CREATE VIEW</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+CREATE VIEW view_name AS
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
+      or 
+CREATE OR REPLACE VIEW view_name AS
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
+
+<h3>Ex:</h3>
+ create view stud_v as select RollNo,Name from student;
+             OR
+create or replace view stud_v as select CourseId,name from student;          
+</code></pre></div>
+
+<div class="output-container" id="output60">
+    <h2>Output</h2>
+   ><pre><code>
+ select * from stud_v;
++--------+-------+
+| RollNo | Name  |
++--------+-------+
+|   4100 | Lucky |
+|   4102 | Ajay  |
+|   4103 | Mahi  |
+|   4104 | Neha  |
++--------+-------+
+4 rows in set (0.01 sec)
+
+
+select * from stud_v;
++----------+-------+
+| CourseId | name  |
++----------+-------+
+| C1       | Lucky |
+| C2       | Ajay  |
+| C3       | Mahi  |
+| NULL     | Neha  |
++----------+-------+
+4 rows in set (0.00 sec)
+
+`
+
+ </code></pre>
+</div>        
+
+
+   <div class="code-container" id="code61">
+    <h2>Query</h2>
+    <h4>DROP VIEW</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+DROP VIEW view_name;
+
+<h3>Ex:</h3>
+ DROP VIEW stud_v;     
+</code></pre></div>
+
+<div class="output-container" id="output61">
+    <h2>Output</h2>
+   <pre><code>
+ mysql> show tables;
+    
++-------------+
+| Tables_in_r |
++-------------+
+| course      |
+| stud_v      |
+| student     |
++-------------+
+3 rows in set (0.04 sec)
+
+mysql> drop view stud_v;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> show tables;
++-------------+
+| Tables_in_r |
++-------------+
+| course      |
+| student     |
++-------------+
+2 rows in set (0.00 sec)
+
+`
+ </code></pre>
+</div>
+<!-- Date function (current date) -->
+<div class="code-container" id="code62">
+    <h2>Query</h2>
+    <h4>Current Date</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT CURDATE();
+
+<h3>Ex:</h3>
+mysql> select current_date();
+    </code></pre>
+</div>
+<div class="output-container" id="output62">
+    <h2>Output</h2>
+    <pre><code>
++----------------+ 
+| current_date() | 
++----------------+ 
+| 2025-04-05     | 
++----------------+ 
+1 row in set (0.00 sec)
+    </code></pre>
+</div>
+
+<!-- Date function (current time) -->
+<div class="code-container" id="code63">
+    <h2>Query</h2>
+    <h4>Current Time</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT CURTIME();
+
+<h3>Ex:</h3>
+mysql> select curtime();
+    </code></pre>
+</div>
+<div class="output-container" id="output63">
+    <h2>Output</h2>
+    <pre><code>
++-----------+ 
+| curtime() | 
++-----------+ 
+| 13:10:55  | 
++-----------+ 
+1 row in set (0.00 sec)
+    </code></pre>
+</div>
+
+<!-- Date function (current timestamp) -->
+<div class="code-container" id="code64">
+    <h2>Query</h2>
+    <h4>Current Timestamp</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT CURRENT_TIMESTAMP;
+
+<h3>Ex:</h3>
+mysql> select current_timestamp();
+    </code></pre>
+</div>
+<div class="output-container" id="output64">
+    <h2>Output</h2>
+    <pre><code>
++---------------------+ 
+| current_timestamp() | 
++---------------------+ 
+| 2025-04-05 13:12:31 | 
++---------------------+ 
+1 row in set (0.00 sec)
+    </code></pre>
+</div>
+
+<!-- Date function (year, month, day) -->
+<div class="code-container" id="code65">
+    <h2>Query</h2>
+    <h4>Extract Year, Month, and Day</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT YEAR(CURDATE());  -- Extracts the year
+SELECT MONTH(CURDATE()); -- Extracts the month
+SELECT DAY(CURDATE());   -- Extracts the day
+
+<h3>Ex:</h3>
+mysql> SELECT YEAR(CURDATE());  -- Extracts the year
+mysql> SELECT MONTH(CURDATE()); -- Extracts the month
+mysql> SELECT DAY(CURDATE());   -- Extracts the day
+    </code></pre>
+</div>
+<div class="output-container" id="output65">
+    <h2>Output</h2>
+    <pre><code>
++-----------------+ 
+| YEAR(CURDATE()) | 
++-----------------+ 
+|            2025 | 
++-----------------+ 
+1 row in set (0.00 sec)
+
++------------------+ 
+| MONTH(CURDATE()) | 
++------------------+ 
+|                4 | 
++------------------+ 
+1 row in set (0.00 sec)
+
++----------------+ 
+| DAY(CURDATE()) | 
++----------------+ 
+|              5 | 
++----------------+ 
+1 row in set (0.00 sec)
+    </code></pre>
+</div>
+
+<!-- Date function (add date) -->
+<div class="code-container" id="code66">
+    <h2>Query</h2>
+    <h4>Add Date</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT DATE_ADD(CURDATE(), INTERVAL 5 DAY);   -- Adds 5 days
+SELECT DATE_ADD(CURDATE(), INTERVAL 2 MONTH);  -- Adds 2 months
+SELECT DATE_ADD(CURDATE(), INTERVAL 1 YEAR);   -- Adds 1 year
+
+<h3>Ex:</h3>
+mysql> SELECT DATE_ADD(CURDATE(), INTERVAL 5 DAY);   -- Adds 5 days
+mysql> SELECT DATE_ADD(CURDATE(), INTERVAL 2 MONTH);  -- Adds 2 months
+mysql> SELECT DATE_ADD(CURDATE(), INTERVAL 1 YEAR);   -- Adds 1 year
+    </code></pre>
+</div>
+<div class="output-container" id="output66">
+    <h2>Output</h2>
+    <pre><code>
++-------------------------------------+ 
+| DATE_ADD(CURDATE(), INTERVAL 5 DAY) | 
++-------------------------------------+ 
+| 2025-04-10                          | 
++-------------------------------------+ 
+1 row in set (0.00 sec)
+
++---------------------------------------+ 
+| DATE_ADD(CURDATE(), INTERVAL 2 MONTH) | 
++---------------------------------------+ 
+| 2025-06-05                            | 
++---------------------------------------+ 
+1 row in set (0.00 sec)
+
++--------------------------------------+ 
+| DATE_ADD(CURDATE(), INTERVAL 1 YEAR) | 
++--------------------------------------+ 
+| 2026-04-05                           | 
++--------------------------------------+ 
+1 row in set (0.00 sec)
+    </code></pre>
+</div>
+
+<!-- Date function (sub date) -->
+<div class="code-container" id="code67">
+    <h2>Query</h2>
+    <h4>Subtract Date</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT DATE_SUB(CURDATE(), INTERVAL 5 DAY);   -- Subtracts 5 days
+SELECT DATE_SUB(CURDATE(), INTERVAL 2 MONTH);  -- Subtracts 2 months
+SELECT DATE_SUB(CURDATE(), INTERVAL 1 YEAR);   -- Subtracts 1 year
+
+<h3>Ex:</h3>
+mysql> SELECT DATE_SUB(CURDATE(), INTERVAL 5 DAY);
+mysql> SELECT DATE_SUB(CURDATE(), INTERVAL 2 MONTH);
+mysql> SELECT DATE_SUB(CURDATE(), INTERVAL 1 YEAR);
+    </code></pre>
+</div>
+<div class="output-container" id="output67">
+    <h2>Output</h2>
+    <pre><code>
++-------------------------------------+ 
+| DATE_SUB(CURDATE(), INTERVAL 5 DAY) | 
++-------------------------------------+ 
+| 2025-03-31                          | 
++-------------------------------------+ 
+1 row in set (0.00 sec)
+
++---------------------------------------+ 
+| DATE_SUB(CURDATE(), INTERVAL 2 MONTH) | 
++---------------------------------------+ 
+| 2025-02-05                            | 
++---------------------------------------+ 
+1 row in set (0.00 sec)
+
++--------------------------------------+ 
+| DATE_SUB(CURDATE(), INTERVAL 1 YEAR) | 
++--------------------------------------+ 
+| 2024-04-05                           | 
++--------------------------------------+ 
+1 row in set (0.00 sec)
+    </code></pre>
+</div>
+
+<!-- Date function (date diff) -->
+<div class="code-container" id="code68">
+    <h2>Query</h2>
+    <h4>Date Difference</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT DATEDIFF('2025-04-10', '2025-04-05');  -- Difference in days
+
+<h3>Ex:</h3>
+mysql> SELECT DATEDIFF('2025-04-10', '2025-04-05');  -- Difference in days
+    </code></pre>
+</div>
+<div class="output-container" id="output68">
+    <h2>Output</h2>
+    <pre><code>
++--------------------------------------+ 
+| DATEDIFF('2025-04-10', '2025-04-05') | 
++--------------------------------------+ 
+|                                    5 | 
++--------------------------------------+ 
+1 row in set (0.00 sec)
+    </code></pre>
+</div>
+
+<!-- Date function (timestamp diff) -->
+<div class="code-container" id="code69">
+    <h2>Query</h2>
+    <h4>Timestamp Difference</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT TIMESTAMPDIFF(unit, timestamp1, timestamp2);
+
+<h3>Ex:</h3>
+mysql> SELECT TIMESTAMPDIFF(SECOND, '2025-04-05 14:30:00', '2025-04-05 14:35:00') AS seconds_diff,
+       -> TIMESTAMPDIFF(MINUTE, '2025-04-05 14:30:00', '2025-04-05 14:35:00') AS minutes_diff,
+       -> TIMESTAMPDIFF(HOUR, '2025-04-05 14:30:00', '2025-04-05 14:35:00') AS hours_diff,
+       -> TIMESTAMPDIFF(DAY, '2025-04-05 14:30:00', '2025-04-07 14:35:00') AS days_diff;
+    </code></pre>
+</div>
+<div class="output-container" id="output69">
+    <h2>Output</h2>
+    <pre><code>
++--------------+--------------+------------+-----------+ 
+| seconds_diff | minutes_diff | hours_diff | days_diff | 
++--------------+--------------+------------+-----------+ 
+|          300 |            5 |          0 |         2 | 
++--------------+--------------+------------+-----------+ 
+1 row in set (0.00 sec)
+    </code></pre>
+</div>
+
+<!-- Date function (now) -->
+<div class="code-container" id="code70">
+    <h2>Query</h2>
+    <h4>Current Timestamp (NOW)</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT NOW();
+
+<h3>Ex:</h3>
+mysql> SELECT TIMESTAMPDIFF(SECOND, '2025-04-01 14:00:00', NOW()) AS seconds_diff,
+       -> TIMESTAMPDIFF(MINUTE, '2025-04-01 14:00:00', NOW()) AS minutes_diff,
+       -> TIMESTAMPDIFF(HOUR, '2025-04-01 14:00:00', NOW()) AS hours_diff,
+       -> TIMESTAMPDIFF(DAY, '2025-04-01 14:00:00', NOW()) AS days_diff;
+    </code></pre>
+</div>
+<div class="output-container" id="output70">
+    <h2>Output</h2>
+    <pre><code>
++--------------+--------------+------------+-----------+ 
+| seconds_diff | minutes_diff | hours_diff | days_diff | 
++--------------+--------------+------------+-----------+ 
+|       344171 |         5736 |         95 |         3 | 
++--------------+--------------+------------+-----------+ 
+1 row in set (0.00 sec)
+    </code></pre>
+</div>
+<!-- character function (Lower) -->
+<div class="code-container" id="code71">
+    <h2>Query</h2>
+    <h4>Lowercase Conversion</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT LOWER(string);
+
+<h3>Ex:</h3>
+mysql> SELECT LOWER('HELLO WORLD') AS lowercase_string;
+    </code></pre>
+</div>
+<div class="output-container" id="output71">
+    <h2>Output</h2>
+    <pre><code>
++------------------+ 
+| lowercase_string | 
++------------------+ 
+| hello world      | 
++------------------+ 
+1 row in set (0.00 sec)
+    </code></pre>
+</div>  
+
+<!-- character function (Upper) -->
+<div class="code-container" id="code72">
+    <h2>Query</h2>
+    <h4>Uppercase Conversion</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT UPPER(string);
+
+<h3>Ex:</h3>
+mysql> SELECT UPPER('hello world') AS uppercase_string;
+    </code></pre>
+</div>
+<div class="output-container" id="output72">
+    <h2>Output</h2>
+    <pre><code>
++------------------+ 
+| uppercase_string | 
++------------------+ 
+| HELLO WORLD      | 
++------------------+ 
+1 row in set (0.00 sec)
+    </code></pre>
+</div>
+
+<!-- character function (Initcap) -->
+<div class="code-container" id="code73">
+    <h2>Query</h2>
+    <h4>Capitalize First Letter</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT INITCAP(string);
+
+<h3>Ex:</h3>
+mysql> SELECT CONCAT(UPPER(SUBSTRING('hello world', 1, 1)), LOWER(SUBSTRING('hello world', 2))) AS initcap_string;
+    </code></pre>
+</div>
+<div class="output-container" id="output73">
+    <h2>Output</h2>
+    <pre><code>
++----------------+ 
+| initcap_string | 
++----------------+ 
+| Hello world    | 
++----------------+ 
+1 row in set (0.00 sec)
+    </code></pre>
+</div>
+
+<!-- character function (concat) -->
+<div class="code-container" id="code74">
+    <h2>Query</h2>
+    <h4>Concatenate Strings</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+CONCAT(string1, string2, ...)
+
+<h3>Ex:</h3>
+mysql> SELECT CONCAT('Hello', ' ', 'World') AS concatenated_string;
+    </code></pre>
+</div>
+<div class="output-container" id="output74">
+    <h2>Output</h2>
+    <pre><code>
++---------------------+ 
+| concatenated_string | 
++---------------------+ 
+| Hello World         | 
++---------------------+ 
+1 row in set (0.00 sec)
+    </code></pre>
+</div>
+
+<!-- character function (length) -->
+<div class="code-container" id="code75">
+    <h2>Query</h2>
+    <h4>Length of String</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+LENGTH(string)
+
+<h3>Ex:</h3>
+mysql> SELECT LENGTH('Hello World') AS length_in_bytes;
+    </code></pre>
+</div>
+<div class="output-container" id="output75">
+    <h2>Output</h2>
+    <pre><code>
++-----------------+ 
+| length_in_bytes | 
++-----------------+ 
+|              11 | 
++-----------------+ 
+1 row in set (0.00 sec)
+    </code></pre>
+</div>
+
+<!-- character function (TRIM) -->
+<div class="code-container" id="code76">
+    <h2>Query</h2>
+    <h4>Trim Spaces</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+TRIM([removal_characters] FROM string)
+
+<h3>Ex:</h3>
+mysql> SELECT TRIM('  Hello World  ') AS trimmed_string;
+    </code></pre>
+</div>
+<div class="output-container" id="output76">
+    <h2>Output</h2>
+    <pre><code>
++----------------+ 
+| trimmed_string | 
++----------------+ 
+| Hello World    | 
++----------------+ 
+1 row in set (0.00 sec)
+    </code></pre>
+</div>
+
+<!-- character function (Substring) -->
+<div class="code-container" id="code77">
+    <h2>Query</h2>
+    <h4>Substring Extraction</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SUBSTRING(string, start_position, length)
+
+<h3>Ex:</h3>
+mysql> SELECT SUBSTRING('Hello World', 1, 5) AS substring_example;
+    </code></pre>
+</div>
+<div class="output-container" id="output77">
+    <h2>Output</h2>
+    <pre><code>
++-------------------+ 
+| substring_example | 
++-------------------+ 
+| Hello             | 
++-------------------+ 
+1 row in set (0.00 sec)
+    </code></pre>
+</div>
+
+<!-- character function (Replace) -->
+<div class="code-container" id="code78">
+    <h2>Query</h2>
+    <h4>Replace Substring</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+REPLACE(string, old_substring, new_substring)
+
+<h3>Ex:</h3>
+mysql> SELECT REPLACE('Hello World', 'World', 'SQL') AS replaced_string;
+    </code></pre>
+</div>
+<div class="output-container" id="output78">
+    <h2>Output</h2>
+    <pre><code>
++-----------------+ 
+| replaced_string | 
++-----------------+ 
+| Hello SQL       | 
++-----------------+ 
+1 row in set (0.00 sec)
+    </code></pre>
+</div>
+
+<!-- character function (Rpad and Lpad) -->
+<div class="code-container" id="code79">
+    <h2>Query</h2>
+    <h4>Right Padding & Left Padding</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+RPAD(string, target_length, padding_string)
+LPAD(string, target_length, padding_string)
+
+<h3>Ex:</h3>
+mysql> SELECT RPAD('Hello', 10, '*') AS rpad_example;
+mysql> SELECT LPAD('Hello', 10, '*') AS lpad_example;
+    </code></pre>
+</div>
+<div class="output-container" id="output79">
+    <h2>Output</h2>
+    <pre><code>
++--------------+ 
+| rpad_example | 
++--------------+ 
+| Hello*****   | 
++--------------+ 
+1 row in set (0.00 sec)
+
++--------------+ 
+| lpad_example | 
++--------------+ 
+| *****Hello   | 
++--------------+ 
+1 row in set (0.00 sec)
+    </code></pre>
+</div>
+
+<!-- character function (Reverse) -->
+<div class="code-container" id="code80">
+    <h2>Query</h2>
+    <h4>Reverse String</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+REVERSE(string)
+
+<h3>Ex:</h3>
+mysql> SELECT REVERSE('Hello') AS reversed_string;
+    </code></pre>
+</div>
+<div class="output-container" id="output80">
+    <h2>Output</h2>
+    <pre><code>
++-----------------+ 
+| reversed_string | 
++-----------------+ 
+| olleH           | 
++-----------------+ 
+1 row in set (0.00 sec)
+    </code></pre>
+</div>
+<!-- Single-row Subquery -->
+<div class="code-container" id="code81">
+    <h2>Query</h2>
+    <h4>Single-row Subquery</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT column_name
+FROM table_name
+WHERE column_name = (SELECT column_name FROM another_table WHERE condition);
+
+<h3>Ex:</h3>
+mysql> SELECT name FROM employees
+       WHERE salary = (SELECT MAX(salary) FROM employees);
+    </code></pre>
+</div>
+<div class="output-container" id="output81">
+    <h2>Output</h2>
+    <pre><code>
++------------+
+| name       |
++------------+
+| John Smith |
++------------+
+1 row in set (0.02 sec)
+    </code></pre>
+</div>
+<!-- Multi-row Subquery -->
+<div class="code-container" id="code82">
+    <h2>Query</h2>
+    <h4>Multi-row Subquery</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT column_name
+FROM table_name
+WHERE column_name IN (SELECT column_name FROM another_table WHERE condition);
+
+<h3>Ex:</h3>
+mysql> SELECT name FROM employees
+       WHERE department_id IN (SELECT department_id FROM departments WHERE location = 'New York');
+    </code></pre>
+</div>
+<div class="output-container" id="output82">
+    <h2>Output</h2>
+    <pre><code>
++------------+
+| name       |
++------------+
+| Jane Doe   |
+| Alice Lee  |
++------------+
+2 rows in set (0.01 sec)
+    </code></pre>
+</div>
+
+        </div>
+    </div>
+</body>
+</html>

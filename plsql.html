@@ -1,0 +1,1677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program Questions</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to external CSS -->
+    <script>
+        function showProgram(questionNumber) {
+            // Hide all code and output sections
+            document.querySelectorAll('.code-container, .output-container').forEach((el) => {
+                el.style.display = 'none';
+            });
+
+            // Show the selected question's code and output
+            document.getElementById('code' + questionNumber).style.display = 'block';
+            document.getElementById('output' + questionNumber).style.display = 'block';
+
+            // Show the main output container
+            document.getElementById('output-container').style.display = 'flex';
+        }
+
+        function toggleDropdown(dropdownId) {
+            var dropdown = document.getElementById(dropdownId);
+            dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
+        }
+    </script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="queries.html">Queries</a></li>
+            <li><a href="contact.html">Submitted By</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="question-list">
+            <h2>PL/SQL Queries:</h2>
+            <h3><u>(All Queries are executed through oracle live pl/sql)</u></h3>
+            <h3>PL/SQL QUERIES</h3>
+            <ul>
+                <li>
+                    <h3>Data Types</h3>
+                    <ul>
+                        <li><a href="#" onclick="showProgram(1)">a) %type</a></li>
+                        <li><a href="#" onclick="showProgram(2)">b) %rowtype</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <h3>Variables</h3>
+                    <ul>
+                        <li><a href="#" onclick="showProgram(18)">a) Assigning variable</a></li>
+                        <li><a href="#" onclick="showProgram(19)">b) Initializing variable</a></li>
+                        <li><a href="#" onclick="showProgram(20)">c) Accessing variable</a></li>
+                        <li><a href="#" onclick="showProgram(21)">d) Scope and Visibility</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <h3>Procedure</h3>
+                    <ul>
+                        <li><a href="#" onclick="showProgram(22)">a) Named Procedure</a></li>
+                        <li><a href="#" onclick="showProgram(23)">b) Unnamed Procedure</a></li>
+                        <li><a href="#" onclick="showProgram(24)">c) Stored Procedure</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <h3>Conditional Control</h3>
+                    <ul>
+                        <li><a href="#" onclick="showProgram(3)">a) If</a></li>
+                        <li><a href="#" onclick="showProgram(4)">b) If-else</a></li>
+                        <li><a href="#" onclick="showProgram(5)">c) If-elsif</a></li>
+                        <li><a href="#" onclick="showProgram(10)">d) Exit Keyword</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <h3>Iterative Control</h3>
+                    <ul>
+                        <li><a href="#" onclick="showProgram(6)">a) Simple Loop</a></li>
+                        <li><a href="#" onclick="showProgram(7)">b) While Loop</a></li>
+                        <li><a href="#" onclick="showProgram(8)">c) For Loop</a></li>
+                        <li><a href="#" onclick="showProgram(9)">d) Goto Keyword</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <h3>Cursors</h3>
+                    <ul>
+                        <li><a href="#" onclick="showProgram(25)">a) Implicit Cursor</a></li>
+                        <li><a href="#" onclick="showProgram(26)">b) Explicit Cursor</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <h3>Functions</h3>
+                    <ul>
+                        <li><a href="#" onclick="showProgram(11)">a) Named Functions</a></li>
+                        <li><a href="#" onclick="showProgram(12)">b) Stored Functions</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <h3>Packages</h3>
+                    <ul>
+                        <li><a href="#" onclick="showProgram(13)">a) Package Specification</a></li>
+                        <li><a href="#" onclick="showProgram(14)">b) Package Body</a></li>
+                        <li><a href="#" onclick="showProgram(15)">c) Execution</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <h3>Exception Handling</h3>
+                    <ul>
+                        <li><a href="#" onclick="showProgram(16)">a) Predefined Exception</a></li>
+                        <li><a href="#" onclick="showProgram(17)">b) User Defined Exception</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <h3>DataBase Triggers</h3>
+                    <ul>
+                        <li>
+                            <a href="#" onclick="toggleDropdown('dropdownMenu2')">1. DataBase Trigger</a>
+                            <ul id="dropdownMenu2" class="dropdown-menu">
+                                <li><a href="#" onclick="showProgram(28)">Creating database Trigger</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" onclick="toggleDropdown('dropdownMenu3')">2. Trigger Type</a>
+                            <ul id="dropdownMenu3" class="dropdown-menu">
+                                <li><a href="#" onclick="showProgram(29)">1. Statement Level Trigger</a></li>
+                                <li><a href="#" onclick="showProgram(30)">2. Row Level Trigger</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" onclick="toggleDropdown('dropdownMenu4')">3. Before Trigger</a>
+                            <ul id="dropdownMenu4" class="dropdown-menu">
+                                <li><a href="#" onclick="showProgram(31)">Insert</a></li>
+                                <li><a href="#" onclick="showProgram(32)">Update</a></li>
+                                <li><a href="#" onclick="showProgram(33)">Delete</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" onclick="toggleDropdown('dropdownMenu5')">4. After Trigger</a>
+                            <ul id="dropdownMenu5" class="dropdown-menu">
+                                <li><a href="#" onclick="showProgram(34)">Insert</a></li>
+                                <li><a href="#" onclick="showProgram(35)">Update</a></li>
+                                <li><a href="#" onclick="showProgram(36)">Delete</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" onclick="showProgram(37)">5. Dropping Trigger</a></li>
+                        <li><a href="#" onclick="showProgram(38)">6. Storage for Trigger</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+    
+    
+        <div class="code-output-container" id="output-container">
+            <div class="code-container" id="code1">
+                <h2>Query</h2>
+                <h4>Using %TYPE in PL/SQL</h4>
+                <pre><code>
+            <h3>Syntax:</h3>
+            DECLARE
+                var_name table_name.column_name%TYPE;
+            BEGIN
+                -- Your PL/SQL logic here
+            END;
+            
+            <h3>Ex:</h3>
+            DECLARE 
+                v_name Students.Name%TYPE;
+                v_courseid Courses.CourseID%TYPE;
+            BEGIN
+                SELECT Name, CourseID INTO v_name, v_courseid
+                FROM Students
+                WHERE CourseID = 'C1';
+                DBMS_OUTPUT.PUT_LINE('Student: ' || v_name || ', Course ID: ' || v_courseid);
+            END;
+                </code></pre>
+            </div>
+            
+            <div class="output-container" id="output1">
+                <h2>Output</h2>
+            
+                <h4>Table Before Execution:</h4>
+                <pre><code>
+            +--------+----------+-----------+
+            | Name   | CourseID | CourseName|
+            +--------+----------+-----------+
+            | Lucky  | C1       | Math      |
+            | Ajay   | C2       | Science   |
+            | Mahi   | C3       | History   |
+            | Neha   | C4       | English   |
+            +--------+----------+-----------+
+            4 rows in set (0.00 sec)
+                </code></pre>
+            
+                <h4>PL/SQL Execution Result (via Oracle Live SQL):</h4>
+                <pre><code>
+            Student: Lucky, Course ID: C1
+                </code></pre>
+            </div>
+            
+            <div class="code-container" id="code2">
+                <h2>Query</h2>
+                <h4>Using %ROWTYPE in PL/SQL</h4>
+                <pre><code>
+            <h3>Syntax:</h3>
+            DECLARE
+                var_name table_name%ROWTYPE;
+            BEGIN
+                -- Your PL/SQL logic here
+            END;
+            
+            <h3>Ex:</h3>
+            DECLARE 
+                x department%ROWTYPE; 
+            BEGIN 
+                SELECT * INTO x 
+                FROM department 
+                WHERE deptno = 3; 
+                
+                DBMS_OUTPUT.PUT_LINE(x.d_name);  -- Department name
+                DBMS_OUTPUT.PUT_LINE(x.deptno);  -- Department number
+                DBMS_OUTPUT.PUT_LINE(x.loc);    -- Location
+            END;
+                </code></pre>
+            </div>
+            
+            <div class="output-container" id="output2">
+                <h2>Output</h2>
+            
+                <h4>Table Before Execution:</h4>
+                <pre><code>
+            +--------+-------------+-------+
+            | DEPTNO | D_NAME      | LOC   |
+            +--------+-------------+-------+
+            | 1      | accounts    | chd   |
+            | 2      | finances    | chd   |
+            | 3      | literature  | chd   |
+            | 4      | computers   | pbalso|
+            +--------+-------------+-------+
+            4 rows in set (0.00 sec)
+                </code></pre>
+            
+                <h4>PL/SQL Execution Result (via Oracle Live SQL):</h4>
+                <pre><code>
+            Literature
+            3
+            CHD
+                </code></pre>
+            </div>
+            <div class="code-container" id="code3">
+                <h2>Query</h2>
+                <h4>Using IF Statement in PL/SQL</h4>
+                <pre><code>
+            <h3>Syntax:</h3>
+            DECLARE
+                variable_name datatype;
+            BEGIN
+                -- Your PL/SQL logic here
+                IF condition THEN
+                    DBMS_OUTPUT.PUT_LINE('Output');
+                END IF;
+            END;
+            
+            <h3>Ex:</h3>
+            DECLARE  
+                i NUMBER(2); 
+            BEGIN 
+                i := 1; 
+                IF i > 0 THEN 
+                    DBMS_OUTPUT.PUT_LINE('Positive number'); 
+                END IF; 
+            END;
+                </code></pre>
+            </div>
+            
+            <div class="output-container" id="output3">
+                <h2>Output</h2>
+
+                <h4>PL/SQL Execution Result (via Oracle Live SQL):</h4>
+                <pre><code>
+            Positive number
+                </code></pre>
+            </div>
+            <div class="code-container" id="code4">
+                <h2>Query</h2>
+                <h4>Using IF-ELSE Statement in PL/SQL</h4>
+                <pre><code>
+            <h3>Syntax:</h3>
+            DECLARE
+                variable_name datatype;
+            BEGIN
+                IF condition THEN
+                    DBMS_OUTPUT.PUT_LINE('Output for true condition');
+                ELSE
+                    DBMS_OUTPUT.PUT_LINE('Output for false condition');
+                END IF;
+            END;
+            
+            <h3>Ex:</h3>
+            DECLARE  
+                i NUMBER(2); 
+            BEGIN 
+                i := 0; 
+                IF i > 0 THEN 
+                    DBMS_OUTPUT.PUT_LINE('Positive number'); 
+                ELSE 
+                    DBMS_OUTPUT.PUT_LINE('Negative number'); 
+                END IF; 
+            END;
+                </code></pre>
+            </div>
+            
+            <div class="output-container" id="output4">
+                <h2>Output</h2>
+          
+                <h4>PL/SQL Execution Result (via Oracle Live SQL):</h4>
+                <pre><code>
+            Negative number
+                </code></pre>
+            </div>
+            <div class="code-container" id="code5">
+                <h2>Query</h2>
+                <h4>Using IF-ELSIF Statement in PL/SQL</h4>
+                <pre><code>
+            <h3>Syntax:</h3>
+            DECLARE
+                variable_name datatype;
+            BEGIN
+                IF condition1 THEN
+                    DBMS_OUTPUT.PUT_LINE('Output for condition 1');
+                ELSIF condition2 THEN
+                    DBMS_OUTPUT.PUT_LINE('Output for condition 2');
+                END IF;
+            END;
+            
+            <h3>Ex:</h3>
+            DECLARE  
+                i NUMBER(2); 
+            BEGIN 
+                i := 0; 
+                IF i > 0 THEN 
+                    DBMS_OUTPUT.PUT_LINE('Positive number'); 
+                ELSIF i = 0 THEN 
+                    DBMS_OUTPUT.PUT_LINE('Zero');
+                END IF; 
+            END;
+                </code></pre>
+            </div>
+            
+            <div class="output-container" id="output5">
+                <h2>Output</h2>
+            
+                <h4>PL/SQL Execution Result (via Oracle Live SQL):</h4>
+                <pre><code>
+            Zero
+                </code></pre>
+            </div>
+            <div class="code-container" id="code6">
+                <h2>Query</h2>
+                <h4>Using Simple Loop in PL/SQL</h4>
+                <pre><code>
+            <h3>Syntax:</h3>
+            DECLARE
+                variable_name datatype;
+            BEGIN
+                LOOP
+                    -- PL/SQL logic inside the loop
+                    EXIT WHEN condition;
+                END LOOP;
+            END;
+            
+            <h3>Ex:</h3>
+            DECLARE  
+                i NUMBER(2); 
+            BEGIN 
+                i := 1; 
+                LOOP 
+                    DBMS_OUTPUT.PUT_LINE('Hello'); 
+                    i := i + 1; 
+                    IF i > 6 THEN 
+                        EXIT; 
+                    END IF; 
+                END LOOP; 
+            END;
+                </code></pre>
+            </div>
+            
+            <div class="output-container" id="output6">
+                <h2>Output</h2>
+        
+                <h4>PL/SQL Execution Result (via Oracle Live SQL):</h4>
+                <pre><code>
+            Hello
+            Hello
+            Hello
+            Hello
+            Hello
+            Hello
+                </code></pre>
+            </div>
+            <div class="code-container" id="code7">
+                <h2>Query</h2>
+                <h4>Using WHILE Loop in PL/SQL</h4>
+                <pre><code>
+            <h3>Syntax:</h3>
+            DECLARE
+                variable_name datatype;
+            BEGIN
+                WHILE condition LOOP
+                    -- PL/SQL logic inside the loop
+                END LOOP;
+            END;
+            
+            <h3>Ex:</h3>
+            DECLARE  
+                i NUMBER(2); 
+            BEGIN 
+                i := 1; 
+                WHILE i <= 6 LOOP
+                    DBMS_OUTPUT.PUT_LINE('Hello'); 
+                    i := i + 1; 
+                END LOOP; 
+            END;
+                </code></pre>
+            </div>
+            
+            <div class="output-container" id="output7">
+                <h2>Output</h2>
+            
+                <h4>PL/SQL Execution Result (via Oracle Live SQL):</h4>
+                <pre><code>
+            Hello
+            Hello
+            Hello
+            Hello
+            Hello
+            Hello
+                </code></pre>
+            </div>
+            <div class="code-container" id="code8">
+                <h2>Query</h2>
+                <h4>Using FOR Loop in PL/SQL</h4>
+                <pre><code>
+            <h3>Syntax:</h3>
+            DECLARE
+                variable_name datatype;
+            BEGIN
+                FOR loop_variable IN start_value..end_value LOOP
+                    -- PL/SQL logic inside the loop
+                END LOOP;
+            END;
+            
+            <h3>Ex:</h3>
+            DECLARE  
+                i NUMBER(2); 
+            BEGIN 
+                FOR i IN 1..6 LOOP
+                    DBMS_OUTPUT.PUT_LINE('Hello'); 
+                END LOOP; 
+            END;
+                </code></pre>
+            </div>
+            
+            <div class="output-container" id="output8">
+                <h2>Output</h2>
+                <h4>PL/SQL Execution Result (via Oracle Live SQL):</h4>
+                <pre><code>
+            Hello
+            Hello
+            Hello
+            Hello
+            Hello
+            Hello
+                </code></pre>
+            </div>
+            <div class="code-container" id="code9">
+                <h2>Query</h2>
+                <h4>Using GOTO Statement in PL/SQL</h4>
+                <pre><code>
+            <h3>Syntax:</h3>
+            DECLARE
+                variable_name datatype;
+            BEGIN
+                GOTO label_name;
+                
+                <<label_name>> 
+                -- PL/SQL logic after GOTO jump
+            END;
+            
+            <h3>Ex:</h3>
+            DECLARE  
+                i NUMBER(2); 
+            BEGIN 
+                i := 1;
+                
+                <<start_loop>>
+                IF i <= 5 THEN
+                    DBMS_OUTPUT.PUT_LINE('Hello ' || i); 
+                    i := i + 1;
+                    GOTO start_loop;  -- Jump back to the start_loop label
+                END IF;
+            END;
+                </code></pre>
+            </div>
+            
+            <div class="output-container" id="output9">
+                <h2>Output</h2>
+            
+              
+                <h4>PL/SQL Execution Result (via Oracle Live SQL):</h4>
+                <pre><code>
+            Hello 1
+            Hello 2
+            Hello 3
+            Hello 4
+            Hello 5
+                </code></pre>
+            </div>
+            <div class="code-container" id="code10">
+                <h2>Query</h2>
+                <h4>Using EXIT Statement in PL/SQL</h4>
+                <pre><code>
+            <h3>Syntax:</h3>
+            DECLARE
+                variable_name datatype;
+            BEGIN
+                LOOP
+                    -- PL/SQL logic inside the loop
+                    EXIT WHEN condition;  -- Exit loop when the condition is met
+                END LOOP;
+            END;
+            
+            <h3>Ex:</h3>
+            DECLARE  
+                i NUMBER(2); 
+            BEGIN 
+                i := 1; 
+                LOOP
+                    DBMS_OUTPUT.PUT_LINE('Hello ' || i); 
+                    i := i + 1; 
+                    
+                    IF i > 5 THEN 
+                        EXIT;  -- Exit the loop if i is greater than 5
+                    END IF;
+                END LOOP; 
+            END;
+                </code></pre>
+            </div>
+            
+            <div class="output-container" id="output10">
+                <h2>Output</h2>
+            
+                <h4>PL/SQL Execution Result (via Oracle Live SQL):</h4>
+                <pre><code>
+            Hello 1
+            Hello 2
+            Hello 3
+            Hello 4
+            Hello 5
+                </code></pre>
+            </div>
+            <div class="code-container" id="code11">
+                <h2>Query</h2>
+                <h4> Named Function Example</h4>
+                <pre><code>
+            <h3>Syntax:</h3>
+            CREATE OR REPLACE FUNCTION function_name (parameter1 datatype)
+            RETURN return_datatype
+            IS
+            BEGIN
+                RETURN result;  -- Return the result
+            END;
+            
+            <h3>Ex:</h3>
+            CREATE OR REPLACE FUNCTION square (num IN NUMBER)
+            RETURN NUMBER
+            IS
+            BEGIN
+                RETURN num * num;  -- Return the square of the number
+            END;
+            
+            -- Example of calling the function:
+            DECLARE
+                num NUMBER := 4;
+                result NUMBER;
+            BEGIN
+                result := square(num);  -- Calling the function
+                DBMS_OUTPUT.PUT_LINE('Square of ' || num || ' is: ' || result);  -- Output the result
+            END;
+                </code></pre>
+            </div>
+            
+            <div class="output-container" id="output11">
+                <h2>Output</h2>
+            
+                <h4>Square Function Before Execution:</h4>
+                <pre><code>
+            CREATE OR REPLACE FUNCTION square (num IN NUMBER)
+            RETURN NUMBER
+            IS
+            BEGIN
+                RETURN num * num;  -- Return the square of the number
+            END;
+                </code></pre>
+            
+                <h4>PL/SQL Execution Result (via Oracle Live SQL):</h4>
+                <pre><code>
+            Square of 4 is: 16
+                </code></pre>
+            </div>
+            <div class="code-container" id="code12">
+                <h2>Query</h2>
+                <h4>Creating and Using a Stored Function in PL/SQL</h4>
+                <pre><code>
+                    <h4> A stored function is a function that is saved in the database and can be called multiple times, either from SQL or other PL/SQL blocks.</h4>
+            <h3>Syntax:</h3>
+            CREATE OR REPLACE FUNCTION function_name (parameter1 datatype)
+            RETURN return_datatype
+            IS
+            BEGIN
+                -- Function logic
+                RETURN result;  -- Return the result
+            END;
+            
+            <h3>Ex:</h3>
+            CREATE OR REPLACE FUNCTION get_square (num IN NUMBER)
+            RETURN NUMBER
+            IS
+            BEGIN
+                RETURN num * num;  -- Return the square of the number
+            END;
+            
+            -- Example of calling the stored function from SQL or PL/SQL:
+            DECLARE
+                num NUMBER := 5;
+                result NUMBER;
+            BEGIN
+                result := get_square(num);  -- Calling the stored function
+                DBMS_OUTPUT.PUT_LINE('Square of ' || num || ' is: ' || result);  -- Output the result
+            END;
+                </code></pre>
+            </div>
+            
+            <div class="output-container" id="output12">
+                <h2>Output</h2>
+            
+                <h4>Stored Function Before Execution:</h4>
+                <pre><code>
+            CREATE OR REPLACE FUNCTION get_square (num IN NUMBER)
+            RETURN NUMBER
+            IS
+            BEGIN
+                RETURN num * num;  -- Return the square of the number
+            END;
+                </code></pre>
+            
+                <h4>PL/SQL Execution Result (via Oracle Live SQL):</h4>
+                <pre><code>
+            Square of 5 is: 25
+                </code></pre>
+            </div>
+            <div class="code-container" id="code13">
+                <h2>Query</h2>
+                <h4>Package Declaration</h4>
+                <pre><code>
+            <h3>Syntax:</h3>
+            CREATE OR REPLACE PACKAGE package_name AS
+                PROCEDURE procedure_name(parameters);
+                FUNCTION function_name(parameters) RETURN return_type;
+            END package_name;
+            
+            <h3>Ex:</h3>
+            CREATE OR REPLACE PACKAGE PACK3 AS  
+                PROCEDURE PRO1(X NUMBER); 
+                FUNCTION FUN1(Y NUMBER) RETURN NUMBER; 
+            END PACK3;
+                </code></pre>
+            </div>
+            
+            <div class="output-container" id="output13">
+                <h2>Output</h2>
+                <pre><code>Package created.</code></pre>
+            </div>
+            
+            <!-- Package Body -->
+            <div class="code-container" id="code14">
+                <h2>Query</h2>
+                <h4>Package Body</h4>
+                <pre><code>
+            <h3>Syntax:</h3>
+            CREATE OR REPLACE PACKAGE BODY package_name AS
+                PROCEDURE ... IS
+                BEGIN
+                    -- logic
+                END;
+            
+                FUNCTION ... RETURN ... IS
+                BEGIN
+                    -- logic
+                    RETURN ...;
+                END;
+            END package_name;
+            
+            <h3>Ex:</h3>
+            CREATE OR REPLACE PACKAGE BODY PACK3 AS  
+            
+                PROCEDURE PRO1(X NUMBER) IS  
+                BEGIN 
+                    DBMS_OUTPUT.PUT_LINE('THIS IS PROCEDURE'); 
+                END; 
+            
+                FUNCTION FUN1(Y NUMBER) RETURN NUMBER IS  
+                BEGIN  
+                    DBMS_OUTPUT.PUT_LINE('THIS IS FUNCTION'); 
+                    RETURN 2; 
+                END; 
+            
+            END PACK3;
+                </code></pre>
+            </div>
+            
+            <div class="output-container" id="output14">
+                <h2>Output</h2>
+                <pre><code>Package Body created.</code></pre>
+            </div>
+            
+            <!-- Package Execution -->
+            <div class="code-container" id="code15">
+                <h2>Query</h2>
+                <h4>Package Execution</h4>
+                <pre><code>
+            <h3>Syntax:</h3>
+            DECLARE
+                var_name datatype;
+            BEGIN
+                procedure_call;
+                var_name := function_call;
+                DBMS_OUTPUT.PUT_LINE(...);
+            END;
+            
+            <h3>Ex:</h3>
+            DECLARE
+                res NUMBER;
+            BEGIN  
+                PACK3.PRO1(1); 
+                res := PACK3.FUN1(1);
+                DBMS_OUTPUT.PUT_LINE('Returned: ' || res);
+            END;
+                </code></pre>
+            </div>
+            
+            <div class="output-container" id="output15">
+                <h2>Output</h2>
+                <pre><code>THIS IS PROCEDURE
+            THIS IS FUNCTION
+            Returned: 2</code></pre>
+            </div>
+            
+            <!-- Exception Handling -->
+            <div class="code-container" id="code16">
+                <h2>Query</h2>
+                <h4>Exception Handling with Predefined Exceptions</h4>
+                <pre><code>
+            <h3>Syntax:</h3>
+            BEGIN
+               -- PL/SQL statements that may raise predefined exceptions
+            
+            EXCEPTION
+               WHEN predefined_exception1 THEN
+                  -- Handling code for predefined_exception1
+            
+               WHEN predefined_exception2 THEN
+                  -- Handling code for predefined_exception2
+            
+               -- Add more predefined exceptions as needed
+            
+               WHEN OTHERS THEN
+                  -- Generic handler for all other exceptions
+            
+            END;
+            <h3>Ex:</h3>
+            DECLARE
+               RESULT  NUMBER;
+               NAME_S  VARCHAR2(50);
+            
+            BEGIN
+               SELECT NAME INTO NAME_S FROM STUDENT WHERE ROLLNO = 9999; -- MAY RAISE NO_DATA_FOUND
+            
+               RESULT := 10 / 0;  -- MAY RAISE ZERO_DIVIDE
+            
+               DBMS_OUTPUT.PUT_LINE('RESULT: ' || RESULT);
+            
+            EXCEPTION
+            
+               WHEN NO_DATA_FOUND THEN
+                  DBMS_OUTPUT.PUT_LINE('NO STUDENT FOUND WITH THAT ROLL NUMBER.');
+            
+               WHEN ZERO_DIVIDE THEN
+                  DBMS_OUTPUT.PUT_LINE('DIVISION BY ZERO ERROR.');
+            
+               WHEN OTHERS THEN
+                  DBMS_OUTPUT.PUT_LINE('AN UNEXPECTED ERROR OCCURRED: ' || SQLERRM);
+            END;
+                </code></pre>
+            </div>
+            
+            <div class="output-container" id="output16">
+                <h2>Output</h2>
+                <pre><code>
+            Statement processed.
+            No student found with that roll number.
+                </code></pre>
+            </div>
+            
+            <!-- User-Defined Exception -->
+            <div class="code-container" id="code17">
+                <h2>Query</h2>
+                <h4>User-Defined Exception</h4>
+                <pre><code>
+            <h3>Syntax:</h3>
+            DECLARE
+              -- Declare a user-defined exception
+                 exception_name EXCEPTION;
+            
+              -- Optional: associate it with an error number using PRAGMA (advanced)
+              -- PRAGMA EXCEPTION_INIT(exception_name, error_number);
+            
+            BEGIN
+                IF some_condition THEN
+                RAISE exception_name;  -- Raise the user-defined exception
+                END IF;
+            
+            EXCEPTION
+                WHEN exception_name THEN
+                DBMS_OUTPUT.PUT_LINE('Custom exception occurred');
+            END;
+            
+            <h3>Ex:</h3>
+            DECLARE
+              my_exception EXCEPTION;
+              num NUMBER := -10;
+            BEGIN
+            IF num < 0 THEN
+                RAISE my_exception;
+            END IF;
+            
+            EXCEPTION
+                WHEN my_exception THEN
+                DBMS_OUTPUT.PUT_LINE('Negative number is not allowed!');
+            END;
+                </code></pre>
+            </div>
+            
+            <div class="output-container" id="output17">
+                <h2>Output</h2>
+                <pre><code>
+            Statement processed.
+            Negative number is not allowed!
+                </code></pre>
+            </div>
+    <!-- variable (assigning) -->
+<div class="code-container" id="code18">
+    <h2>Query</h2>
+    <h4>Variable (Assigning)</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+variable_name := expression;
+
+<h3>Ex:</h3>
+DECLARE
+    -- Declare variables
+    v_name VARCHAR2(50);
+    v_age  NUMBER;
+BEGIN
+    -- Assign values to the variables
+    v_name := 'Alice';
+    v_age  := 25;
+
+    -- Output the values of the variables using DBMS_OUTPUT
+    DBMS_OUTPUT.PUT_LINE('Name: ' || v_name);
+    DBMS_OUTPUT.PUT_LINE('Age: ' || v_age);
+END;
+    </code></pre>
+</div>
+<div class="output-container" id="output18">
+    <h2>Output</h2>
+    <pre><code>
+Statement processed.
+Name: Alice
+Age: 25
+    </code></pre>
+</div>
+
+<!-- variable (initializing) -->
+<div class="code-container" id="code19">
+    <h2>Query</h2>
+    <h4>Variable (Initializing)</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+1. Initializing Variables During Declaration:
+variable_name data_type := initial_value;
+
+2. Initializing Variables After Declaration:
+variable_name data_type;
+BEGIN
+    variable_name := initial_value;
+END;
+
+<h3>Ex:</h3>
+1. Initializing Variables During Declaration:
+DECLARE
+    v_name VARCHAR2(50) := 'John';  -- Initialize with 'John'
+    v_age  NUMBER := 30;            -- Initialize with 30
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('Name: ' || v_name);
+    DBMS_OUTPUT.PUT_LINE('Age: ' || v_age);
+END;
+
+2. Initializing Variables After Declaration:
+DECLARE
+    v_name VARCHAR2(50);  -- Declare variable
+    v_age  NUMBER;        -- Declare variable
+BEGIN
+    -- Initialize variables in the BEGIN block
+    v_name := 'Alice';    -- Initialize with 'Alice'
+    v_age  := 25;         -- Initialize with 25
+
+    DBMS_OUTPUT.PUT_LINE('Name: ' || v_name);
+    DBMS_OUTPUT.PUT_LINE('Age: ' || v_age);
+END;
+    </code></pre>
+</div>
+<div class="output-container" id="output19">
+    <h2>Output</h2>
+    <pre><code>
+1. Initializing Variables During Declaration:
+Statement processed.
+Name: John
+Age: 30
+
+2. Initializing Variables After Declaration:
+Statement processed.
+Name: Alice
+Age: 25
+    </code></pre>
+</div>
+
+<!-- variable (accessing) -->
+<div class="code-container" id="code20">
+    <h2>Query</h2>
+    <h4>Variable (Accessing)</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+DECLARE
+    variable_name data_type := initial_value;
+BEGIN
+    -- Access the variable by referencing it directly
+    DBMS_OUTPUT.PUT_LINE(variable_name);  -- Access and print the value
+END;
+
+<h3>Ex:</h3>
+1: Accessing Variables in an Anonymous Block
+DECLARE
+    v_name VARCHAR2(50) := 'Alice';  -- Declare and initialize variable
+    v_age  NUMBER := 30;             -- Declare and initialize variable
+BEGIN
+    -- Access and print variables
+    DBMS_OUTPUT.PUT_LINE('Name: ' || v_name);  -- Accessing v_name
+    DBMS_OUTPUT.PUT_LINE('Age: ' || v_age);   -- Accessing v_age
+END;
+
+2: Using Variables in Calculations
+DECLARE
+    v_price   NUMBER := 100;      -- Initialize product price
+    v_discount NUMBER := 20;      -- Initialize discount percentage
+    v_final_price NUMBER;         -- Declare variable to store final price
+BEGIN
+    -- Accessing variables and performing calculations
+    v_final_price := v_price - (v_price * v_discount / 100);  -- Calculating discounted price
+
+    DBMS_OUTPUT.PUT_LINE('Original Price: ' || v_price);        -- Access and print original price
+    DBMS_OUTPUT.PUT_LINE('Discount: ' || v_discount || '%');     -- Access and print discount
+    DBMS_OUTPUT.PUT_LINE('Final Price: ' || v_final_price);      -- Access and print final price
+END;
+    </code></pre>
+</div>
+
+<div class="output-container" id="output20">
+    <h2>Output</h2>
+    <pre><code>
+1: Accessing Variables in an Anonymous Block
+Statement processed.
+Name: Alice
+Age: 30
+
+2: Using Variables in Calculations
+Statement processed.
+Original Price: 100
+Discount: 20%
+Final Price: 80
+    </code></pre>
+</div>
+
+<!-- variable (scope and visibility) -->
+<div class="code-container" id="code21">
+    <h2>Query</h2>
+    <h4>Variable (Scope and Visibility)</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+Example of Local Variable Scope:
+DECLARE
+    v_name VARCHAR2(50); -- Local variable declaration
+BEGIN
+    v_name := 'Alice';  -- Local variable assignment
+    DBMS_OUTPUT.PUT_LINE('Name: ' || v_name);
+END;
+
+Example of Package-Level Variable Scope:
+CREATE OR REPLACE PACKAGE my_package IS
+    v_global_name VARCHAR2(50);  -- Global variable in the package
+    PROCEDURE print_name;
+END my_package;
+
+Example of Variable Visibility (Within a Block):
+DECLARE
+    v_local_name VARCHAR2(50); -- Declared in the DECLARE section
+BEGIN
+    v_local_name := 'Bob';  -- Initialized inside the BEGIN block
+    DBMS_OUTPUT.PUT_LINE('Name: ' || v_local_name);  -- Visible within this block
+END;
+
+<h3>Ex:</h3>
+Example of Shadowing (Same Variable Name with Different Scope)
+
+DECLARE
+    v_value NUMBER := 10;  -- Outer scope variable
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('Outer v_value: ' || v_value);  -- Prints 10
+
+    DECLARE
+        v_value NUMBER := 20;  -- Inner scope variable, shadows outer v_value
+    BEGIN
+        DBMS_OUTPUT.PUT_LINE('Inner v_value: ' || v_value);  -- Prints 20
+    END;
+
+    DBMS_OUTPUT.PUT_LINE('Outer v_value again: ' || v_value);  -- Prints 10
+END;
+    </code></pre>
+</div>
+<div class="output-container" id="output21">
+    <h2>Output</h2>
+    <pre><code>
+Outer v_value: 10
+Inner v_value: 20
+Outer v_value again: 10
+    </code></pre>
+</div>
+<!-- Named procedure -->
+<div class="code-container" id="code22">
+    <h2>Query</h2>
+    <h4>Named Procedure</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+CREATE OR REPLACE PROCEDURE procedure_name
+    [parameter1_name IN parameter1_type,  -- Optional input parameters
+     parameter2_name OUT parameter2_type, -- Optional output parameters
+     parameter3_name IN OUT parameter3_type]  -- Optional input/output parameters
+IS
+BEGIN
+    -- Procedure body: Write the statements that the procedure will execute
+    -- Example logic
+END procedure_name;
+
+<h3>Ex:</h3>
+1. CREATE A PROCEDURE
+CREATE OR REPLACE PROCEDURE add_numbers( 
+    p_num1 IN NUMBER,   -- Input parameter 1 
+    p_num2 IN NUMBER    -- Input parameter 2 
+) IS 
+BEGIN 
+    -- Print the sum of p_num1 and p_num2 
+    DBMS_OUTPUT.PUT_LINE('Sum: ' || (p_num1 + p_num2)); 
+END add_numbers; 
+
+2. CALL THE PROCEDURE
+BEGIN
+    -- Call the procedure and pass two numbers as arguments
+    add_numbers(10, 20);  -- This will output "Sum: 30"
+END;
+    </code></pre>
+</div>
+<div class="output-container" id="output22">
+    <h2>Output</h2>
+    <pre><code>
+1. CREATE A PROCEDURE
+Procedure created.
+
+2. CALL THE PROCEDURE
+Statement processed.
+Sum: 30
+    </code></pre>
+</div>
+
+<!-- Unnamed procedure -->
+<div class="code-container" id="code23">
+    <h2>Query</h2>
+    <h4>Unnamed Procedure</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+DECLARE
+    -- Declarations of variables, cursors, etc.
+BEGIN
+    -- PL/SQL logic and SQL
+
+<h3>Ex:</h3>
+DECLARE
+    v_num1 NUMBER := 5;
+    v_num2 NUMBER := 10;
+    v_sum  NUMBER;
+BEGIN
+    -- Calculate the sum of v_num1 and v_num2
+    v_sum := v_num1 + v_num2;
+
+    -- Print the sum
+    DBMS_OUTPUT.PUT_LINE('Sum: ' || v_sum);
+END;
+    </code></pre>
+</div>
+<div class="output-container" id="output23">
+    <h2>Output</h2>
+    <pre><code>
+Statement processed.
+Sum: 15
+    </code></pre>
+</div>
+
+<!-- Stored procedure -->
+<div class="code-container" id="code24">
+    <h2>Query</h2>
+    <h4>Stored Procedure</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+CREATE OR REPLACE PROCEDURE procedure_name
+    [parameter1_name IN parameter1_type,   -- Optional input parameter
+     parameter2_name OUT parameter2_type,  -- Optional output parameter
+     parameter3_name IN OUT parameter3_type] -- Optional input/output parameter
+IS
+BEGIN
+    -- Procedure logic
+    -- SQL and PL/SQL statements
+END procedure_name;
+
+<h3>Ex:</h3>
+1. CREATE A STORED PROCEDURE
+CREATE OR REPLACE PROCEDURE get_full_name( 
+    p_first_name IN VARCHAR2,  -- Input parameter for first name 
+    p_last_name IN VARCHAR2,   -- Input parameter for last name 
+    p_full_name OUT VARCHAR2   -- Output parameter for full name 
+) IS 
+BEGIN 
+    -- Combine the first and last name into a full name 
+    p_full_name := p_first_name || ' ' || p_last_name; 
+END get_full_name; 
+
+2. CALL THE PROCEDURE
+DECLARE
+    v_full_name VARCHAR2(100);  -- Declare a variable to hold the full name
+BEGIN
+    -- Call the procedure with input parameters and output variable
+    get_full_name('John', 'Doe', v_full_name);
+
+    -- Print the full name
+    DBMS_OUTPUT.PUT_LINE('Full Name: ' || v_full_name);
+END;
+    </code></pre>
+</div>
+<div class="output-container" id="output24">
+    <h2>Output</h2>
+    <pre><code>
+1. CREATE A STORED PROCEDURE
+Procedure created.
+
+2. CALL THE PROCEDURE
+Statement processed.
+Full Name: John Doe
+    </code></pre>
+</div>
+<!-- Implicit cursor -->
+<div class="code-container" id="code25">
+    <h2>Query</h2>
+    <h4>Implicit Cursor</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+-- (INSERT EXAMPLE)
+INSERT INTO table_name (column1, column2, ...)
+VALUES (value1, value2, ...);
+
+<h3>Ex:</h3>
+DECLARE
+    v_rows_inserted NUMBER;
+BEGIN
+    -- Implicit cursor used for the INSERT operation
+    INSERT INTO employees (employee_id, first_name, last_name, hire_date)
+    VALUES (1001, 'John', 'Doe', SYSDATE);
+
+    -- Get the number of rows affected
+    v_rows_inserted := SQL%ROWCOUNT;
+
+    -- Display the result
+    DBMS_OUTPUT.PUT_LINE('Rows inserted: ' || v_rows_inserted);
+END;
+    </code></pre>
+</div>
+<div class="output-container" id="output25">
+    <h2>Output</h2>
+    <pre><code>
+Rows inserted: 1
+    </code></pre>
+</div>
+
+<!-- Explicit cursor -->
+<div class="code-container" id="code26">
+    <h2>Query</h2>
+    <h4>Explicit Cursor</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+DECLARE
+    -- Declare cursor
+    CURSOR cursor_name IS
+        SELECT column1, column2 FROM table_name WHERE condition;
+
+    -- Declare variables to hold data from the cursor
+    v_column1 table_name.column1%TYPE;
+    v_column2 table_name.column2%TYPE;
+BEGIN
+    -- Open the cursor
+    OPEN cursor_name;
+
+    -- Loop through the cursor and fetch rows
+    LOOP
+        FETCH cursor_name INTO v_column1, v_column2;
+        
+        -- Exit loop when no more rows to fetch
+        EXIT WHEN cursor_name%NOTFOUND;
+
+        -- Process each row (e.g., print values)
+        DBMS_OUTPUT.PUT_LINE('Column 1: ' || v_column1 || ', Column 2: ' || v_column2);
+    END LOOP;
+
+    -- Close the cursor
+    CLOSE cursor_name;
+END;
+
+<h3>Ex:</h3>
+DECLARE
+    -- Declare the cursor
+    CURSOR emp_cursor IS
+        SELECT first_name, last_name, salary FROM employees;
+    
+    -- Declare variables to hold employee data
+    v_first_name employees.first_name%TYPE;
+    v_last_name employees.last_name%TYPE;
+    v_salary employees.salary%TYPE;
+BEGIN
+    -- Open the cursor
+    OPEN emp_cursor;
+    
+    -- Loop through each row of the cursor
+    LOOP
+        -- Fetch the data into variables
+        FETCH emp_cursor INTO v_first_name, v_last_name, v_salary;
+
+        -- Exit loop if no more rows
+        EXIT WHEN emp_cursor%NOTFOUND;
+
+        -- Display the employee information
+        DBMS_OUTPUT.PUT_LINE('Employee: ' || v_first_name || ' ' || v_last_name || ', Salary: ' || v_salary);
+    END LOOP;
+
+    -- Close the cursor
+    CLOSE emp_cursor;
+END;
+    </code></pre>
+</div>
+<div class="output-container" id="output26">
+    <h2>Output</h2>
+    <pre><code>
+Employee: Steven King, Salary: 24000
+Employee: Neena Kochhar, Salary: 17000
+Employee: Lex De Haan, Salary: 17000
+    </code></pre>
+</div>
+<!-- Trigger Syntax: Create -->
+<div class="code-container" id="code28">
+    <h2>Query</h2>
+    <h4>Trigger Syntax: CREATE</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+CREATE [OR REPLACE] TRIGGER trigger_name
+{BEFORE | AFTER | INSTEAD OF}
+{INSERT | UPDATE | DELETE}
+ON table_name
+[FOR EACH ROW]
+DECLARE
+   -- variable declarations (optional)
+BEGIN
+   -- trigger logic
+END;
+
+<h3>Ex:</h3>
+CREATE OR REPLACE TRIGGER trg_after_insert
+AFTER INSERT
+ON students
+FOR EACH ROW
+BEGIN
+   DBMS_OUTPUT.PUT_LINE('A new student was inserted with Roll No: ' || :NEW.rollno);
+END;
+    </code></pre>
+</div>
+<div class="output-container" id="output28">
+    <h2>Output</h2>
+    <pre><code>
+Trigger created.
+
+<h4>Execution</h4>
+INSERT INTO student(STUDENT_ID,ROLLNO, NAME) 
+VALUES (4106,17,'RIYA');
+
+<h4>Output</h4>
+1 row(s) inserted.
+A new student was inserted with Roll No: 17
+    </code></pre>
+</div>
+
+<!-- Trigger Syntax: Simple Trigger -->
+<div class="code-container" id="code29">
+    <h2>Query</h2>
+    <h4>Simple Trigger Syntax</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+CREATE OR REPLACE TRIGGER trigger_name
+BEFORE | AFTER INSERT OR UPDATE OR DELETE
+ON table_name
+BEGIN
+   -- logic (does not support :NEW or :OLD)
+END;
+
+<h3>Ex:</h3>
+SELECT *FROM STUDENT; 
+CREATE OR REPLACE TRIGGER student_insert
+AFTER INSERT ON student
+BEGIN
+   DBMS_OUTPUT.PUT_LINE('Insert operation done on student table.');
+END;
+    </code></pre>
+</div>
+<div class="output-container" id="output29">
+    <h2>Output</h2>
+    <pre><code>
+Trigger created.
+
+<h4>Execution</h4>
+INSERT INTO student(STUDENT_ID,ROLLNO, NAME) 
+VALUES (4019,22,'RIMA');
+
+<h4>Output</h4>
+1 row(s) inserted.
+A new student was inserted with Roll No: 22
+Insert operation done on student table.
+    </code></pre>
+</div>
+
+<!-- Trigger Syntax: BEFORE INSERT Trigger -->
+<div class="code-container" id="code30">
+    <h2>Query</h2>
+    <h4>BEFORE INSERT Trigger Syntax</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+CREATE OR REPLACE TRIGGER trigger_name
+BEFORE | AFTER INSERT OR UPDATE OR DELETE
+ON table_name
+FOR EACH ROW
+BEGIN
+   -- logic using :NEW and :OLD
+END;
+
+<h3>Ex:</h3>
+CREATE OR REPLACE TRIGGER check_marks
+BEFORE INSERT ON student
+FOR EACH ROW
+BEGIN
+   IF :NEW.marks > 100 THEN
+      RAISE_APPLICATION_ERROR(-20001, 'Marks cannot be greater than 100');
+   END IF;
+END;
+    </code></pre>
+</div>
+<div class="output-container" id="output30">
+    <h2>Output</h2>
+    <pre><code>
+Trigger created.
+
+<h4>Execution</h4>
+INSERT INTO student (rollno, name, marks) VALUES (2, 'Ajay', 110);
+
+<h4>Output</h4>
+ORA-20001: Marks cannot be greater than 100
+    </code></pre>
+</div>
+
+<!-- Trigger Syntax: BEFORE INSERT Trigger Example -->
+<div class="code-container" id="code31">
+    <h2>Query</h2>
+    <h4>BEFORE INSERT Trigger Example</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+CREATE OR REPLACE TRIGGER trigger_name
+BEFORE INSERT ON table_name
+FOR EACH ROW
+BEGIN
+   -- Logic before inserting a row
+END;
+
+<h3>Ex:</h3>
+CREATE OR REPLACE TRIGGER before_insert_trigger
+BEFORE INSERT ON student
+FOR EACH ROW
+BEGIN
+   DBMS_OUTPUT.PUT_LINE('Before inserting: ' || :NEW.name);
+END;
+    </code></pre>
+</div>
+<div class="output-container" id="output31">
+    <h2>Output</h2>
+    <pre><code>
+Trigger created.
+
+<h4>Execution</h4>
+INSERT INTO student (rollno, name, marks) VALUES (1, 'Lucky', 90);
+
+<h4>Output</h4>
+Before inserting: Lucky
+    </code></pre>
+</div>
+
+<!-- Trigger Syntax: BEFORE UPDATE Trigger -->
+<div class="code-container" id="code32">
+    <h2>Query</h2>
+    <h4>BEFORE UPDATE Trigger Syntax</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+CREATE OR REPLACE TRIGGER trigger_name
+BEFORE UPDATE ON table_name
+FOR EACH ROW
+BEGIN
+   -- Logic before updating a row
+END;
+
+<h3>Ex:</h3>
+CREATE OR REPLACE TRIGGER before_update_trigger
+BEFORE UPDATE ON student
+FOR EACH ROW
+BEGIN
+   DBMS_OUTPUT.PUT_LINE('Updating name from ' || :OLD.name || ' to ' || :NEW.name);
+END;
+    </code></pre>
+</div>
+<div class="output-container" id="output32">
+    <h2>Output</h2>
+    <pre><code>
+Trigger created.  
+
+<h4>Execution</h4>
+UPDATE student SET name = 'Ajay' WHERE rollno = 1;
+
+<h4>Output</h4>
+Updating name from Lucky to Ajay
+    </code></pre>
+</div>
+
+<!-- Trigger Syntax: BEFORE DELETE Trigger -->
+<div class="code-container" id="code33">
+    <h2>Query</h2>
+    <h4>BEFORE DELETE Trigger Syntax</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+CREATE OR REPLACE TRIGGER trigger_name
+BEFORE DELETE ON table_name
+FOR EACH ROW
+BEGIN
+   -- Logic before deleting a row
+END;
+
+<h3>Ex:</h3>
+CREATE OR REPLACE TRIGGER before_delete_trigger
+BEFORE DELETE ON student
+FOR EACH ROW
+BEGIN
+   DBMS_OUTPUT.PUT_LINE('Deleting student: ' || :OLD.name);
+END;
+    </code></pre>
+</div>
+<div class="output-container" id="output33">
+    <h2>Output</h2>
+    <pre><code>
+Trigger created.  
+
+<h4>Execution</h4>
+DELETE FROM student WHERE rollno = 1;
+
+<h4>Output</h4>
+Deleting student: Ajay
+    </code></pre>
+</div>
+
+<!-- Trigger Syntax: AFTER INSERT Trigger -->
+<div class="code-container" id="code34">
+    <h2>Query</h2>
+    <h4>AFTER INSERT Trigger Syntax</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+CREATE OR REPLACE TRIGGER trigger_name
+AFTER INSERT ON table_name
+FOR EACH ROW
+BEGIN
+   -- Logic after inserting a row
+END;
+
+<h3>Ex:</h3>
+CREATE OR REPLACE TRIGGER after_insert_trigger
+AFTER INSERT ON student
+FOR EACH ROW
+BEGIN
+   DBMS_OUTPUT.PUT_LINE('Student inserted: ' || :NEW.name);
+END;
+    </code></pre>
+</div>
+<div class="output-container" id="output34">
+    <h2>Output</h2>
+    <pre><code>
+Trigger created.  
+
+<h4>Execution</h4>
+INSERT INTO student (rollno, name, marks) VALUES (2, 'Neha', 88);
+
+<h4>Output</h4>
+Student inserted: Neha
+    </code></pre>
+</div>
+
+<!-- Trigger Syntax: AFTER UPDATE Trigger -->
+<div class="code-container" id="code35">
+    <h2>Query</h2>
+    <h4>AFTER UPDATE Trigger Syntax</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+CREATE OR REPLACE TRIGGER trigger_name
+AFTER UPDATE ON table_name
+FOR EACH ROW
+BEGIN
+   -- Logic after updating a row
+END;
+
+<h3>Ex:</h3>
+CREATE OR REPLACE TRIGGER after_update_trigger
+AFTER UPDATE ON student
+FOR EACH ROW
+BEGIN
+   DBMS_OUTPUT.PUT_LINE('Updated name to: ' || :NEW.name);
+END;
+    </code></pre>
+</div>
+<div class="output-container" id="output35">
+    <h2>Output</h2>
+    <pre><code>
+Trigger created.  
+
+<h4>Execution</h4>
+UPDATE student SET name = 'Mahi' WHERE rollno = 2;
+
+<h4>Output</h4>
+Updated name to: Mahi
+    </code></pre>
+</div>
+
+<!-- Trigger Syntax: AFTER DELETE Trigger -->
+<div class="code-container" id="code36">
+    <h2>Query</h2>
+    <h4>AFTER DELETE Trigger Syntax</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+CREATE OR REPLACE TRIGGER trigger_name
+AFTER DELETE ON table_name
+FOR EACH ROW
+BEGIN
+   -- Logic after deleting a row
+END;
+
+<h3>Ex:</h3>
+CREATE OR REPLACE TRIGGER after_delete_trigger
+AFTER DELETE ON student
+FOR EACH ROW
+BEGIN
+   DBMS_OUTPUT.PUT_LINE('Deleted student: ' || :OLD.name);
+END;
+    </code></pre>
+</div>
+<div class="output-container" id="output36">
+    <h2>Output</h2>
+    <pre><code>
+Trigger created.  
+
+<h4>Execution</h4>
+DELETE FROM student WHERE rollno = 2;
+
+<h4>Output</h4>
+Deleted student: Mahi
+    </code></pre>
+</div>
+
+<!-- Trigger Syntax: Drop Trigger -->
+<div class="code-container" id="code37">
+    <h2>Query</h2>
+    <h4>Drop Trigger Syntax</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+DROP TRIGGER trigger_name;
+
+<h3>Ex:</h3>
+DROP TRIGGER before_insert_trigger;
+    </code></pre>
+</div>
+<div class="output-container" id="output37">
+    <h2>Output</h2>
+    <pre><code>
+Trigger dropped.
+    </code></pre>
+</div>
+
+<!-- Trigger Syntax: View User Triggers -->
+<div class="code-container" id="code38">
+    <h2>Query</h2>
+    <h4>View User Triggers Syntax</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT * FROM USER_TRIGGERS;
+or (to select specific columns):
+SELECT trigger_name, table_name, triggering_event, trigger_type, status 
+FROM user_triggers;
+
+<h3>Ex:</h3>
+SELECT trigger_name, table_name, triggering_event, trigger_type, status 
+FROM user_triggers;
+    </code></pre>
+</div>
+<div class="output-container" id="output38">
+    <h2>Output</h2>
+    <pre><code>
+TRIGGER_NAME         TABLE_NAME   TRIGGERING_EVENT   TRIGGER_TYPE        STATUS
+----------------------------------------------------------------------------------
+BEFORE_UPDATE_TRIGGER  STUDENT     UPDATE             BEFORE EACH ROW     ENABLED
+CHECK_MARKS            STUDENT     INSERT             BEFORE EACH ROW     ENABLED
+STUDENT_INSERT         STUDENT     INSERT             AFTER STATEMENT     ENABLED
+TRG_AFTER_INSERT       STUDENT     INSERT             AFTER EACH ROW      ENABLED
+    </code></pre>
+</div>
+
+                       
+</div>
+</div>
+</body>
+</html>            
+
+
+                

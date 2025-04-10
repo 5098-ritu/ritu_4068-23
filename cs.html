@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Program Questions</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url(BC.WEBP);
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: 100% 100%;
+    }
+    body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: 	#f0f5f8;
+            color: #333;
+        }
+        header {
+            background-color: #4A90E2;
+            padding: 10px 0;
+            text-align: center;
+            height: 60px;
+        }
+    nav ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 35px;
+        }
+        nav ul li a:hover {
+    background-color: #005f73;
+    color: #5c95ce;
+}
+
+ 
+    a {
+      color: blue;
+    }
+
+    a:hover {
+      color: green;
+    }
+
+    a:visited {
+      color: white;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #7db3e0;
+      border-radius: 5px;
+    }
+
+    details {
+      background-color: #fff;
+      padding: 15px 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(82, 145, 217, 0.05);
+    }
+
+    summary {
+      font-size: 1.4em;
+      font-weight: bold;
+      cursor: pointer;
+      color: 	#333;
+      margin-bottom: 10px;
+    }
+
+    summary:hover {
+      color: #cdd9e8;
+    }
+
+    p, li {
+      font-size: 1.15em;
+    }
+
+    pre {
+      background: #E0CBAF;
+      padding: 12px;
+      border-radius: 6px;
+      overflow: auto;
+      font-size: 0.95em;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    table, th, td {
+      border: 1px solid #bfa980;
+    }
+
+    th, td {
+      padding: 10px;
+      background-color: #fff;
+    }
+
+    th {
+      background-color: #d8c3a5;
+    }
+
+    footer {
+      background-color: 	#e0f7ff;
+      text-align: center;
+      padding: 15px 0;
+      color: #FFFFFF;
+      margin-top: 40px;
+    }
+    main {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #9ccaed; /* Light sky blue background for main content */
+  border-radius: 5px;
+}
+  </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="queries.html">Queries</a></li>
+                <li><a href="contact.html">Submitted By</a></li>
+            </ul>
+        </nav>
+    </header>
+  <main>
+
+    <details open>
+      <summary>Title</summary>
+      <p><strong>Performance-Based Ranking of College Students in Multi-Course Programs</strong></p>
+    </details>
+
+    <details>
+      <summary>Objective</summary>
+      <p>
+        To design and implement a database system that evaluates and ranks students based on their academic performance, per semester and per subject, across multiple professional courses in a college.
+        The system filters out students who are absent or have failed (marks below 60%), and uses a tie-breaker based on aggregate marks.
+      </p>
+    </details>
+
+    <details>
+      <summary>Professional Courses Offered</summary>
+      <ul>
+        <li>C1 - BCA</li>
+        <li>C2 - MBA</li>
+        <li>C3 - B.Tech</li>
+        <li>C4 - BBA</li>
+        <li>C5 - B.Sc</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary>Database Schema & Relationships</summary>
+      <p><strong>Courses Table:</strong> Contains details of all the courses.</p>
+      <p><strong>Students Table:</strong> Holds student data including enrolled course and semester.</p>
+      <p><strong>Subjects Table:</strong> Maps subjects to each course.</p>
+      <p><strong>Marks Table:</strong> Contains marks obtained by students per subject.</p>
+      <p>These tables are interlinked using CourseID, RollNo, and SubjectID.</p>
+
+      <pre>
+CREATE TABLE Courses (
+    CourseID VARCHAR(5) PRIMARY KEY,
+    CourseName VARCHAR(100)
+);
+
+CREATE TABLE Students (
+    RollNo NUMBER PRIMARY KEY,
+    Name VARCHAR(100),
+    CourseID VARCHAR(5),
+    Sem NUMBER,
+    FOREIGN KEY (CourseID) REFERENCES Courses(CourseID)
+);
+
+CREATE TABLE Subjects (
+    SubjectID VARCHAR(5) PRIMARY KEY,
+    SubjectName VARCHAR(100),
+    CourseID VARCHAR(5),
+    FOREIGN KEY (CourseID) REFERENCES Courses(CourseID)
+);
+
+CREATE TABLE Marks (
+    RollNo NUMBER,
+    SubjectID VARCHAR(5),
+    MarksObtained VARCHAR(5),
+    FOREIGN KEY (RollNo) REFERENCES Students(RollNo),
+    FOREIGN KEY (SubjectID) REFERENCES Subjects(SubjectID)
+);
+      </pre>
+    </details>
+
+    <details>
+      <summary>Ranking Conditions</summary>
+      <ul>
+        <li>Students must score at least 30 in each subject.</li>
+        <li>Students must not be marked 'A' (Absent) in any subject.</li>
+        <li>Minimum aggregate percentage should be 60%.</li>
+        <li>If tied, aggregate marks are used as a tie-breaker. If still tied, same rank is assigned.</li>
+      </ul>
+    </details>
+
+<details>
+<summary>Semester-wise Ranking Condition</summary>
+
+      <ul>
+        <li>A student must have 60% or more total marks for the semester to be selected for ranking.</li>
+        <li>Ranking is based on the total marks across all subjects.</li>
+        <li>If there is a tie in the total marks across all subjects, students will be ranked based on their aggregate marks.</li>
+        <li>If the aggregates are the same, both students will be ranked equally.</li>
+      </ul>
+    </section>
+
+
+</details>
+
+
+<details>
+<summary>Subject-wise Ranking Condition</summary>
+
+     <details>
+<summary>Semester-wise Ranking Condition</summary>
+
+      <ul>
+        <li>A student must have 60% or more total marks for the semester to be selected for ranking.</li>
+        <li>Ranking is based on the total marks across all subjects.</li>
+        <li>If there is a tie in the total marks across all subjects, students will be ranked based on their aggregate marks.</li>
+        <li>If the aggregates are the same, both students will be ranked equally.</li>
+      </ul>
+    </section>
+
+
+</details>
+    </section>
+
+
+</details>
+
+
+
+
+
+    <details>
+      <summary>PL/SQL: Semester-Wise Ranking</summary>
+      <pre>
+SELECT
+    s.RollNo,
+    s.Name,
+    SUM(m.MarksObtained) AS TotalMarks,
+    AVG(m.MarksObtained) AS AggregateMarks,
+    RANK() OVER (ORDER BY SUM(m.MarksObtained) DESC, AVG(m.MarksObtained) DESC) AS Rank
+FROM
+    Students s
+JOIN
+    Marks m ON s.RollNo = m.RollNo
+GROUP BY
+    s.RollNo, s.Name
+HAVING
+    SUM(m.MarksObtained) >= 240
+ORDER BY
+    Rank;
+      </pre>
+    </details>
+
+    <details>
+      <summary>SQL: Subject-Wise Ranking</summary>
+      <pre>
+SELECT 
+    SubjectID,
+    SubjectName,
+    RollNo,
+    MarksObtained,
+    Status,
+    Position
+FROM (
+    SELECT 
+        s.SubjectID,
+        s.SubjectName,
+        m.RollNo,
+        m.MarksObtained,
+        CASE
+            WHEN m.MarksObtained = 'A' THEN 'Absent'
+            WHEN TO_NUMBER(m.MarksObtained) < 30 THEN 'Fail'
+            ELSE 'Pass'
+        END AS Status,
+        -- Rank calculation based on marks and aggregate marks for tie-breaking
+        RANK() OVER (
+            PARTITION BY s.SubjectID
+            ORDER BY TO_NUMBER(m.MarksObtained) DESC, 
+                     SUM(TO_NUMBER(m1.MarksObtained)) DESC  -- Rank based on aggregate marks in case of tie
+        ) AS Position
+    FROM 
+        Marks m
+    JOIN 
+        Subjects s ON m.SubjectID = s.SubjectID
+    JOIN 
+        Students st ON m.RollNo = st.RollNo
+    LEFT JOIN 
+        Marks m1 ON m.RollNo = m1.RollNo AND m1.SubjectID = m.SubjectID -- Left join for aggregate marks
+    WHERE
+        st.Sem = 4  -- BCA Semester 4 students only
+        AND (m.MarksObtained != 'A' OR TO_NUMBER(m.MarksObtained) >= 30)
+    GROUP BY 
+        s.SubjectID,
+        s.SubjectName,
+        m.RollNo,
+        m.MarksObtained,
+        st.Sem
+) ranked
+WHERE 
+    Position <= 3  -- Only select positions 1, 2, and 3
+ORDER BY 
+    SubjectID,
+    Position;
+      </pre>
+    </details>
+
+    <details>
+      <summary>Output (Semester Ranking)</summary>
+      <table class="rank-table">
+  <thead>
+    <tr>
+      <th>ROLLNO</th>
+      <th>NAME</th>
+      <th>TOTALMARKS</th>
+      <th>AGGREGATEMARKS</th>
+      <th>RANK</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1001</td>
+      <td>Alice</td>
+      <td>341</td>
+      <td>85.25</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>1005</td>
+      <td>Eva</td>
+      <td>285</td>
+      <td>71.25</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>1004</td>
+      <td>David</td>
+      <td>285</td>
+      <td>71.25</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+    </details>
+<details>
+ <summary>Output (Subject Ranking)</summary>
+<table class="rank-table">
+  <thead>
+    <tr>
+      <th>SUBJECTID</th>
+      <th>SUBJECTNAME</th>
+      <th>ROLLNO</th>
+      <th>MARKSOBTAINED</th>
+      <th>STATUS</th>
+      <th>POSITION</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>S1</td>
+      <td>DBMS</td>
+      <td>1001</td>
+      <td>85</td>
+      <td>Pass</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>S1</td>
+      <td>DBMS</td>
+      <td>1005</td>
+      <td>80</td>
+      <td>Pass</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>S1</td>
+      <td>DBMS</td>
+      <td>1004</td>
+      <td>80</td>
+      <td>Pass</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>S2</td>
+      <td>Operating Systems</td>
+      <td>1001</td>
+      <td>90</td>
+      <td>Pass</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>S2</td>
+      <td>Operating Systems</td>
+      <td>1004</td>
+      <td>70</td>
+      <td>Pass</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>S2</td>
+      <td>Operating Systems</td>
+      <td>1005</td>
+      <td>70</td>
+      <td>Pass</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>S3</td>
+      <td>Data Structures</td>
+      <td>1001</td>
+      <td>78</td>
+      <td>Pass</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>S3</td>
+      <td>Data Structures</td>
+      <td>1004</td>
+      <td>75</td>
+      <td>Pass</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>S3</td>
+      <td>Data Structures</td>
+      <td>1005</td>
+      <td>75</td>
+      <td>Pass</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>S4</td>
+      <td>Networking</td>
+      <td>1001</td>
+      <td>88</td>
+      <td>Pass</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>S4</td>
+      <td>Networking</td>
+      <td>1002</td>
+      <td>70</td>
+      <td>Pass</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>S4</td>
+      <td>Networking</td>
+      <td>1003</td>
+      <td>65</td>
+      <td>Pass</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+    </details>
+      
+<details>
+<summary>Data table</summary>
+  <div class="content"><CENTER><h1>TABLE DATA</h1></CENTER>
+      <h3>Course Table</h3>
+      <table>
+        <tr><th>CourseID</th><th>CourseName</th></tr>
+        <tr><td>C1</td><td>BCA</td></tr>
+      </table>
+
+      <!-- Tables in one row using Flexbox -->
+      <div class="tables-row">
+        <!-- Students Table -->
+        <div>
+          <h3>Students Table</h3>
+          <table>
+            <tr><th>RollNo</th><th>Name</th><th>CourseID</th><th>Sem</th></tr>
+            <tr><td>1001</td><td>Alice</td><td>C1</td><td>4</td></tr>
+            <tr><td>1002</td><td>Bob</td><td>C1</td><td>4</td></tr>
+            <tr><td>1003</td><td>Charlie</td><td>C1</td><td>4</td></tr>
+            <tr><td>1004</td><td>David</td><td>C1</td><td>4</td></tr>
+            <tr><td>1005</td><td>Eva</td><td>C1</td><td>4</td></tr>
+          </table>
+        </div>
+        
+        
+        
+        
+        <div>
+        <h3>Subjects Table</h3>
+        <table>
+          <tr><th>SubjectID</th><th>SubjectName</th><th>CourseID</th></tr>
+          <tr><td>S1</td><td>DBMS</td><td>C1</td></tr>
+          <tr><td>S2</td><td>Operating Systems</td><td>C1</td></tr>
+          <tr><td>S3</td><td>Data Structures</td><td>C1</td></tr>
+          <tr><td>S4</td><td>Networking</td><td>C1</td></tr>
+        </table>
+      </div>
+
+    <br>    <!-- Marks Table -->
+      <!-- Marks Table -->
+<div>
+  <h3>Marks Table</h3>
+  <table class="marks-table">
+    <tr><th>RollNo</th><th>SubjectID</th><th>MarksObtained</th></tr>
+    <tr><td>1001</td><td>S1</td><td>85</td></tr>
+    <tr><td>1001</td><td>S2</td><td>90</td></tr>
+    <tr><td>1001</td><td>S3</td><td>78</td></tr>
+    <tr><td>1001</td><td>S4</td><td>88</td></tr>
+    <tr><td>1002</td><td>S1</td><td>78</td></tr>
+    <tr><td>1002</td><td>S2</td><td>29</td></tr>
+    <tr><td>1002</td><td>S3</td><td>60</td></tr>
+    <tr><td>1002</td><td>S4</td><td>70</td></tr>
+    <tr><td>1003</td><td>S1</td><td>50</td></tr>
+    <tr><td>1003</td><td>S2</td><td>55</td></tr>
+    <tr><td>1003</td><td>S3</td><td>60</td></tr>
+    <tr><td>1003</td><td>S4</td><td>65</td></tr>
+    <tr><td>1004</td><td>S1</td><td>80</td></tr>
+    <tr><td>1004</td><td>S2</td><td>70</td></tr>
+    <tr><td>1004</td><td>S3</td><td>75</td></tr>
+    <tr><td>1004</td><td>S4</td><td>60</td></tr>
+    <tr><td>1005</td><td>S1</td><td>80</td></tr>
+    <tr><td>1005</td><td>S2</td><td>70</td></tr>
+    <tr><td>1005</td><td>S3</td><td>75</td></tr>
+    <tr><td>1005</td><td>S4</td><td>60</td></tr>
+  </table>
+</div>
+
+      </div>
+      
+    </div>
+
+</details>

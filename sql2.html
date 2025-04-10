@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program Questions</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to external CSS -->
+    <script>
+        function showProgram(questionNumber) {
+            // Hide all code and output sections
+            document.querySelectorAll('.code-container, .output-container').forEach((el) => {
+                el.style.display = 'none';
+            });
+
+            // Show the selected question's code and output
+            document.getElementById('code' + questionNumber).style.display = 'block';
+            document.getElementById('output' + questionNumber).style.display = 'block';
+
+            // Show the main output container
+            document.getElementById('output-container').style.display = 'flex';
+        }
+
+        function toggleDropdown(dropdownId) {
+            var dropdown = document.getElementById(dropdownId);
+            dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
+        }
+    </script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="queries.html">Queries</a></li>
+            <li><a href="contact.html">Submitted By</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="question-list">
+          <h2>SQL Queries:</h2>
+          <h3><u>(All Queries are executed through mysql)</u></h3>
+          <h3>Querying Multiple Tables Using Joins</h3>
+          <ul>
+            <li>
+              <a href="#" onclick="toggleDropdown('dropdownMenu1')">1. JOINS</a>
+              <ul id="dropdownMenu1" class="dropdown-menu">
+                <li><a href="#" onclick="showProgram(1)">a) Equi Join (Inner Join)</a></li>
+                <li><a href="#" onclick="showProgram(2)">b) Cross Join</a></li>
+                <li>
+                  <a href="#" onclick="toggleDropdown('dropdownMenu2')">c) Outer Joins</a>
+                  <ul id="dropdownMenu2" class="dropdown-menu">
+                    <li><a href="#" onclick="showProgram(3)">1. Left Outer Join</a></li>
+                    <li><a href="#" onclick="showProgram(4)">2. Right Outer Join</a></li>
+                    <li><a href="#" onclick="showProgram(5)">3. Full Outer Join</a></li>
+                  </ul>
+                </li>
+                <li><a href="#" onclick="showProgram(6)">d) Self Join</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="code-output-container" id="output-container">
+  <!-- Equi Join Clause -->
+<div class="code-container" id="code1">
+    <h2>Query</h2>
+    <h4>Equi Join Clause</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT column1, column2, ...
+FROM table1
+INNER JOIN table2
+ON table1.column = table2.column;
+
+<h3>Ex:</h3>
+mysql> SELECT Students.Name, Courses.CourseName 
+FROM Students
+INNER JOIN Courses 
+ON Students.CourseID = Courses.CourseID;
+    </code></pre>
+</div>
+
+<div class="output-container" id="output1">
+    <h2>Output</h2>
+
+    <h3>Table Before Join:</h3>
+    <pre><code>
++--------+----------+---------+
+| Name   | CourseID | CourseName |
++--------+----------+---------+
+| Lucky  |   C1     | Math      |
+| Ajay   |   C2     | Science   |
+| Mahi   |   C3     | History   |
+| Neha   |   C4     | English   |
++--------+----------+---------+
+4 rows in set (0.00 sec)
+
++----------+------------+
+| CourseID | CourseName |
++----------+------------+
+|   C1     | Math       |
+|   C2     | Science    |
+|   C3     | History    |
+|   C4     | English    |
++----------+------------+
+4 rows in set (0.00 sec)
+
+    </code></pre>
+
+    <h3>After Applying Join:</h3>
+    <pre><code>
++--------+-----------+
+| Name   | CourseName|
++--------+-----------+
+| Lucky  | Math      |
+| Ajay   | Science   |
+| Mahi   | History   |
+| Neha   | English   |
++--------+-----------+
+4 rows in set (0.00 sec)
+    </code></pre>
+</div>
+<!-- CROSS JOIN Clause -->
+<div class="code-container" id="code2">
+    <h2>Query</h2>
+    <h4>CROSS JOIN Clause</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT column1, column2, ...
+FROM table1
+CROSS JOIN table2;
+
+<h3>Ex:</h3>
+mysql> SELECT Students.Name, Courses.CourseName
+FROM Students
+CROSS JOIN Courses;
+    </code></pre>
+</div>
+
+<div class="output-container" id="output2">
+    <h2>Output</h2>
+
+    <h3>Table Before Join:</h3>
+    <pre><code>
++--------+----------+
+| Name   | CourseID |
++--------+----------+
+| Lucky  |   C1     |
+| Ajay   |   C2     |
+| Mahi   |   C3     |
+| Neha   |   C4     |
++--------+----------+
+4 rows in set (0.00 sec)
+
++----------+------------+
+| CourseID | CourseName |
++----------+------------+
+|   C1     | Math       |
+|   C2     | Science    |
+|   C3     | History    |
+|   C4     | English    |
++----------+------------+
+4 rows in set (0.00 sec)
+    </code></pre>
+
+    <h3>After Applying CROSS JOIN:</h3>
+    <pre><code>
++--------+-----------+
+| Name   | CourseName|
++--------+-----------+
+| Lucky  | Math      |
+| Lucky  | Science   |
+| Lucky  | History   |
+| Lucky  | English   |
+| Ajay   | Math      |
+| Ajay   | Science   |
+| Ajay   | History   |
+| Ajay   | English   |
+| Mahi   | Math      |
+| Mahi   | Science   |
+| Mahi   | History   |
+| Mahi   | English   |
+| Neha   | Math      |
+| Neha   | Science   |
+| Neha   | History   |
+| Neha   | English   |
++--------+-----------+
+16 rows in set (0.00 sec)
+    </code></pre>
+</div>
+<!-- LEFT OUTER JOIN Clause -->
+<div class="code-container" id="code3">
+    <h2>Query</h2>
+    <h4>LEFT OUTER JOIN Clause</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT column1, column2, ...
+FROM table1
+LEFT OUTER JOIN table2
+ON table1.column = table2.column;
+
+<h3>Ex:</h3>
+mysql> SELECT Students.Name, Courses.CourseName
+FROM Students
+LEFT OUTER JOIN Courses
+ON Students.CourseID = Courses.CourseID;
+    </code></pre>
+</div>
+
+<div class="output-container" id="output3">
+    <h2>Output</h2>
+
+    <h3>Table Before Join:</h3>
+    <pre><code>
++--------+----------+
+| Name   | CourseID |
++--------+----------+
+| Lucky  |   C1     |
+| Ajay   |   C2     |
+| Mahi   |   C3     |
+| Neha   |   NULL    |
++--------+----------+
+4 rows in set (0.00 sec)
+
++----------+------------+
+| CourseID | CourseName |
++----------+------------+
+|   C1     | Math       |
+|   C2     | Science    |
+|   C3     | History    |
+|   C4     | English    |
++----------+------------+
+4 rows in set (0.00 sec)
+    </code></pre>
+
+    <h3>After Applying LEFT OUTER JOIN:</h3>
+    <pre><code>
++--------+-----------+
+| Name   | CourseName|
++--------+-----------+
+| Lucky  | Math      |
+| Ajay   | Science   |
+| Mahi   | History   |
+| Neha   | NULL      |
++--------+-----------+
+4 rows in set (0.00 sec)
+    </code></pre>
+</div>
+<!-- RIGHT OUTER JOIN Clause -->
+<div class="code-container" id="code4">
+    <h2>Query</h2>
+    <h4>RIGHT OUTER JOIN Clause</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT column1, column2, ...
+FROM table1
+RIGHT OUTER JOIN table2
+ON table1.column = table2.column;
+
+<h3>Ex:</h3>
+mysql> SELECT Students.Name, Courses.CourseName
+FROM Students
+RIGHT OUTER JOIN Courses
+ON Students.CourseID = Courses.CourseID;
+    </code></pre>
+</div>
+
+<div class="output-container" id="output4">
+    <h2>Output</h2>
+
+    <h3>Table Before Join:</h3>
+    <pre><code>
++--------+----------+
+| Name   | CourseID |
++--------+----------+
+| Lucky  |   C1     |
+| Ajay   |   C2     |
+| Mahi   |   C3     |
+| Neha   |   NULL    |
++--------+----------+
+4 rows in set (0.00 sec)
+
++----------+------------+
+| CourseID | CourseName |
++----------+------------+
+|   C1     | Math       |
+|   C2     | Science    |
+|   C3     | History    |
+|   C4     | English    |
++----------+------------+
+4 rows in set (0.00 sec)
+    </code></pre>
+
+    <h3>After Applying RIGHT OUTER JOIN:</h3>
+    <pre><code>
++--------+-----------+
+| Name   | CourseName|
++--------+-----------+
+| Lucky  | Math      |
+| Ajay   | Science   |
+| Mahi   | History   |
+| NULL   | English   |
++--------+-----------+
+4 rows in set (0.00 sec)
+    </code></pre>
+</div>
+<!-- FULL OUTER JOIN Clause -->
+<div class="code-container" id="code5">
+    <h2>Query</h2>
+    <h4>FULL OUTER JOIN Clause</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT column1, column2, ...
+FROM table1
+FULL OUTER JOIN table2
+ON table1.column = table2.column;
+
+<h3>Ex:</h3>
+mysql> SELECT Students.Name, Courses.CourseName
+FROM Students
+FULL OUTER JOIN Courses
+ON Students.CourseID = Courses.CourseID;
+    </code></pre>
+</div>
+
+<div class="output-container" id="output5">
+    <h2>Output</h2>
+
+    <h3>Table Before Join:</h3>
+    <pre><code>
++--------+----------+
+| Name   | CourseID |
++--------+----------+
+| Lucky  |   C1     |
+| Ajay   |   C2     |
+| Mahi   |   C3     |
+| Neha   |   NULL    |
++--------+----------+
+4 rows in set (0.00 sec)
+
++----------+------------+
+| CourseID | CourseName |
++----------+------------+
+|   C1     | Math       |
+|   C2     | Science    |
+|   C3     | History    |
+|   C4     | English    |
++----------+------------+
+4 rows in set (0.00 sec)
+    </code></pre>
+
+    <h3>After Applying FULL OUTER JOIN:</h3>
+    <pre><code>
++--------+-----------+
+| Name   | CourseName|
++--------+-----------+
+| Lucky  | Math      |
+| Ajay   | Science   |
+| Mahi   | History   |
+| Neha   | NULL      |
+| NULL   | English   |
++--------+-----------+
+5 rows in set (0.00 sec)
+    </code></pre>
+</div>
+<!-- SELF JOIN Clause -->
+<div class="code-container" id="code6">
+    <h2>Query</h2>
+    <h4>SELF JOIN Clause</h4>
+    <pre><code>
+<h3>Syntax:</h3>
+SELECT A.column1, B.column2
+FROM table_name A, table_name B
+WHERE A.column = B.column;
+
+<h3>Ex:</h3>
+mysql> SELECT A.Name AS StudentName, B.Name AS MentorName
+FROM Students A, Students B
+WHERE A.MentorID = B.StudentID;
+    </code></pre>
+</div>
+
+<div class="output-container" id="output6">
+    <h2>Output</h2>
+
+    <h3>Table Before Join:</h3>
+    <pre><code>
++-----------+-----------+-----------+
+| StudentID | Name      | MentorID  |
++-----------+-----------+-----------+
+| 1         | Lucky     | 2         |
+| 2         | Ajay      | 3         |
+| 3         | Mahi      | NULL      |
+| 4         | Neha      | 2         |
++-----------+-----------+-----------+
+4 rows in set (0.00 sec)
+    </code></pre>
+
+    <h3>After Applying SELF JOIN:</h3>
+    <pre><code>
++--------------+-------------+
+| StudentName  | MentorName  |
++--------------+-------------+
+| Lucky        | Ajay        |
+| Ajay         | Mahi        |
+| Neha         | Ajay        |
++--------------+-------------+
+3 rows in set (0.00 sec)
+    </code></pre>
+</div>
+
+</div>
+</div>
+</body>
+</html>
